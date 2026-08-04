@@ -1,0 +1,308 @@
+/* ==========================================================================
+   1. CONFIGURATION GLOBALE & STRUCTURE (Sticky Footer inclus)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;500;700&display=swap');
+
+* { box-sizing: border-box; }
+
+:root { --shipping-banner-height: 44px; }
+
+html, body { 
+    height: 100%; 
+    margin: 0; 
+}
+
+body {
+    background-color: transparent !important;
+    color: #FFFFFF !important;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column; /* Pour pousser le footer en bas */
+    overflow-x: hidden;
+}
+
+/* On force le contenu principal à prendre toute la place disponible */
+main, .page-entretien, .grille-magique, .container-envers {
+    flex: 1 0 auto;
+}
+
+/* ==========================================================================
+   2. BANNIÈRE & NAVIGATION (Fixées en haut)
+   ========================================================================== */
+.shipping-banner {
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+    height: var(--shipping-banner-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ff69b4;
+    color: #000;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(255,105,180,0.3);
+    animation: shipping-banner-pop 900ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    padding: 15px 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.9);
+    position: sticky;
+    top: var(--shipping-banner-height); /* Se colle juste sous la bannière */
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,105,180,0.2);
+    gap: 20px;
+}
+
+.main-nav a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.main-nav a:hover { color: #ff69b4; text-shadow: 0 0 10px #ff69b4; }
+
+/* ==========================================================================
+   3. BOUTIQUE - GRILLE & IMAGES (Bordure Noire Homogène)
+   ========================================================================== */
+.grille-magique {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 105, 180, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    border-color: #ff69b4;
+}
+
+/* Le cadre NOIR HOMOGÈNE pour toutes les photos */
+.product .img-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background: #000; /* Fond noir pur */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 105, 180, 0.1);
+}
+
+/* L'image à l'intérieur du cadre noir */
+.product img {
+    max-width: 90% !important; /* Crée la bordure noire régulière */
+    max-height: 90% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    transition: transform 0.4s ease;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+}
+
+/* Exception pour les produits zen - centrage parfait */
+.product.zen img {
+    max-width: 85% !important;
+    max-height: 85% !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    transition: transform 0.4s ease;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5));
+}
+
+.product .img-hover {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    opacity: 0;
+}
+
+.product:hover .img-hover { opacity: 1; }
+
+/* ==========================================================================
+   4. TEXTES & TITRES
+   ========================================================================== */
+.presentation-text, .presentation-subtext, .promo-box p, .signature, .section-texte p {
+    font-family: 'Dancing Script', cursive !important;
+    font-size: 26px !important;
+}
+
+h1, h2, h3 {
+    font-weight: 700 !important;
+    color: #ff9ec6 !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   5. FOOTER (Stable en bas et centré)
+   ========================================================================== */
+footer, .footer-links {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 60px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid rgba(255, 105, 180, 0.2);
+    margin-top: auto; 
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Aligne les éléments les uns sous les autres */
+    align-items: center;    /* Centre horizontalement */
+    gap: 20px;              /* Espace entre le texte et le bouton */
+}
+
+footer p, .footer-links p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+}
+
+/* Le bouton CGV */
+.footer-links a, footer a.btn-cgv {
+    display: inline-block;
+    color: #ff9ec6 !important;
+    padding: 10px 25px;
+    border: 2px solid #ff9ec6;
+    border-radius: 50px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.3s;
+    width: fit-content; /* S'adapte à la taille du texte */
+}
+
+.footer-links a:hover, footer a.btn-cgv:hover {
+    background: #ff9ec6;
+    color: #000 !important;
+    box-shadow: 0 0 15px #ff9ec6;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .grille-magique { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px; 
+        padding: 20px 10px; 
+        align-items: stretch; /* Force les colonnes à avoir la même hauteur */
+    }
+    
+    .product { 
+        height: 100%; /* Force les produits à remplir leur cellule */
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .product .img-container { height: 200px; }
+    .header-container { flex-direction: column; padding: 20px; }
+    
+    /* Panier adapté pour mobile - positionné pour ne pas gêner le footer */
+    #cart-sidebar {
+        position: fixed !important;
+        top: auto !important;
+        bottom: 80px !important; /* Plus haut pour laisser le footer visible */
+        right: 10px !important;
+        left: 10px !important;
+        width: calc(100% - 20px) !important;
+        max-width: 320px !important;
+        z-index: 1000 !important;
+        transform: scale(0.85);
+        transform-origin: bottom center;
+    }
+    
+    #cart-sidebar h3 {
+        font-size: 0.9rem !important;
+        margin: 0 0 10px 0 !important;
+    }
+    
+    #cart-sidebar #cart-items-list {
+        max-height: 150px !important;
+        margin-bottom: 10px !important;
+    }
+    
+    #cart-sidebar .product-item {
+        padding: 5px 0 !important;
+        font-size: 0.8rem !important;
+    }
+    
+    #cart-sidebar button {
+        padding: 6px 10px !important;
+        font-size: 0.75rem !important;
+    }
+}
+
+/* Media queries pour très petits écrans */
+@media (max-width: 480px) {
+    .grille-magique { 
+        grid-template-columns: 1fr; 
+        gap: 15px; 
+        padding: 15px 5px; 
+    }
+    
+    .product .img-container { height: 180px; }
+    .product { padding: 15px; }
+    
+    .header-text h1 { font-size: 1.8rem; }
+    .main-nav ul { 
+        gap: 10px; 
+        padding: 15px 10px; 
+        font-size: 0.8rem;
+    }
+    
+    /* Footer en une seule colonne */
+    footer > div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        text-align: center !important;
+        padding: 0 15px !important;
+    }
+    
+    footer h3, footer h4 {
+        font-size: 1.1rem !important;
+    }
+    
+    footer p, footer li {
+        font-size: 0.8rem !important;
+    }
+    
+    /* Panier mobile optimisé */
+    #cart-sidebar {
+        bottom: 70px !important;
+        transform: scale(0.8) !important;
+    }
+}
+
+/* Animation de la bannière */
+@keyframes shipping-banner-pop {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(0); }
+}
+
+/* --- LE RESTE DE TON CSS (Snipcart, CGV etc.) PEUT ÊTRE COLLÉ ICI --- */

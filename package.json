@@ -1,0 +1,8 @@
+{
+  "name": "magical-epoxy-site",
+  "version": "1.0.0",
+  "description": "Site statique Mag'ical Epoxy avec fonction Netlify Stripe",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

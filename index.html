@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <title>Mag'ical Epoxy | Créations Artisanales en Résine à Haute-Vienne</title>
+    <meta name="description" content="Statuettes uniques, porte-savons, figurines... Fait main à Haute-Vienne. Le cadeau original qu'on ne trouve nul par ailleurs ! Artisanat local en Haute-Vienne. Livraison offerte dès 40€.">
+    
+    <!-- Open Graph / Réseaux Sociaux -->
+    <meta property="og:title" content="Mag'ical Epoxy | Créations Artisanales en Résine à Haute-Vienne">
+    <meta property="og:description" content="Statuettes uniques, porte-savons, figurines... Fait main à Haute-Vienne. Le cadeau original qu'on ne trouve nul par ailleurs ! Artisanat local en Haute-Vienne. Livraison offerte dès 40€.">
+    <meta property="og:image" content="https://magical-epoxy.fr/images/BOITES/BOITE-SERP-001.jpg">
+    <meta property="og:url" content="https://magical-epoxy.fr">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mag'ical Epoxy | Créations Artisanales en Résine">
+    <meta name="twitter:description" content="Statuettes uniques, porte-savons, figurines... Fait main en Haute Vienne">
+    <meta name="twitter:image" content="https://magical-epoxy.fr/images/BOITES/BOITE-SERP-001.jpg">
+    
+    <link rel="icon" type="image/png" href="images/logomagepoxy.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <script src="cart.js"></script>
+
+    <style>
+        body { 
+            background: linear-gradient(135deg, #000000 0%, #1a0033 20%, #2d1b69 40%, #4a148c 60%, #311b92 80%, #000000 100%);
+            background-attachment: fixed;
+            color: white; 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            overflow-x: hidden; 
+        }
+        
+        .shipping-banner {
+            background: #ff69b4;
+            color: black;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            position: sticky;
+            top: 0;
+            z-index: 110;
+            box-shadow: 0 2px 10px rgba(255,105,180,0.3);
+        }
+
+        #star-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+        .star { position: absolute; border-radius: 50%; opacity: 0.6; }
+        .star-small { width: 1px; height: 1px; }
+        .star-medium { width: 2px; height: 2px; box-shadow: 0 0 2px currentColor; }
+        .star-large { width: 3px; height: 3px; box-shadow: 0 0 4px currentColor; }
+        .star-xl { width: 4px; height: 4px; box-shadow: 0 0 6px 1px currentColor; }
+        
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
+        @keyframes drift-slow { from { transform: translateX(0) translateY(0); } to { transform: translateX(100px) translateY(-50px); } }
+        @keyframes drift-medium { from { transform: translateX(0) translateY(0); } to { transform: translateX(-80px) translateY(-80px); } }
+        @keyframes drift-fast { from { transform: translateX(0) translateY(0); } to { transform: translateX(150px) translateY(-30px); } }
+        
+        .main-nav ul { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            list-style: none; 
+            padding: 20px; 
+            background: rgba(0,0,0,0.9); 
+            margin: 0; 
+            position: sticky; 
+            top: 40px; 
+            z-index: 100; 
+            gap: 20px; 
+            flex-wrap: wrap; 
+            border-bottom: 1px solid rgba(255,105,180,0.2); 
+        }
+
+        .main-nav a { text-decoration: none; color: white !important; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+        .main-nav a:hover { color: #ff9ec6 !important; }
+        
+        #cart-toggle:hover {
+            background: #ff69b4 !important;
+            color: black !important;
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(255,105,180,0.5);
+        }
+        
+        .header-magical { display: flex; align-items: center; justify-content: center; padding: 60px 20px; gap: 25px; flex-wrap: wrap; position: relative; z-index: 10; }
+        .logo-img { width: 120px; height: 120px; object-fit: cover; }
+        .header-text h1 { font-size: 3.2rem; margin: 0; letter-spacing: 2px; }
+        .header-text p { font-family: 'Quicksand', sans-serif; font-size: 1.4rem; color: rgba(255,255,255,0.8); margin: 0; font-weight: 500; }
+        
+        .cat-nav { text-align: center; margin-bottom: 50px; position: relative; z-index: 10; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
+        .filter-btn { background: rgba(255,105,180,0.1); color: white; border: 2px solid #ff69b4; padding: 10px 20px; border-radius: 30px; font-weight: bold; cursor: pointer; font-family: 'Quicksand'; font-size: 0.85rem; transition: 0.3s; }
+        .filter-btn:hover, .filter-btn.active { background: #ff69b4; color: black; transform: scale(1.05); }
+        
+        .grille-magique { display: grid; grid-template-columns: repeat(auto-fit, 260px); gap: 20px; padding: 20px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 10; justify-items: center; }
+        
+        .product { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 105, 180, 0.15); border-radius: 20px; padding: 20px; text-align: center; transition: all 0.4s ease; display: flex; flex-direction: column; }
+        .product.hidden { display: none !important; }
+        .product:hover { transform: translateY(-10px); border-color: #ff69b4; box-shadow: 0 10px 40px rgba(255,105,180,0.25); background: rgba(255, 255, 255, 0.07); }
+        
+        .product .img-container { position: relative; width: 100%; height: 280px; overflow: hidden; border-radius: 15px; margin-bottom: 8px; background: transparent; display: flex; align-items: center; justify-content: center; }
+        .product img { max-width: 100%; max-height: 100%; object-fit: contain; transition: transform 0.4s ease; }
+        
+        .product:not(.savon):not(.des):not(.zen) img { object-fit: contain; width: 100%; height: 100%; }
+        .product.zen img { object-fit: contain !important; max-width: 90% !important; max-height: 90% !important; width: auto !important; height: auto !important; }
+        .product.des img { object-fit: contain; max-width: 100%; max-height: 100%; }
+
+        .product .img-hover { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 0.4s ease; object-fit: contain; }
+        .product:hover .img-hover { opacity: 1; }
+        .product h2 { font-size: 1.2rem; color: #ff9ec6; margin: 6px 0 3px 0; font-weight: 700; min-height: 2.2rem; display: flex; align-items: center; justify-content: center; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .product-specs { font-size: 0.85rem; color: rgba(255, 255, 255, 0.7); margin-bottom: 6px; line-height: 1.2; }
+        .product-description { font-size: 0.9rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 6px; line-height: 1.2; text-align: left; text-align: justify; }
+        
+        .product-details-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .product-details-container.visible {
+            max-height: 500px;
+            opacity: 1;
+        }
+        
+        .product-details { font-size: 0.8rem; color: rgba(255, 255, 255, 0.6); margin-bottom: 6px; line-height: 1.2; margin-top: 8px; }
+        .product-details strong { color: #ff9ec6; }
+        
+        .view-details-link {
+            color: #ff9ec6;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: underline;
+            display: inline-block;
+            margin: 8px 0;
+            transition: color 0.3s ease;
+        }
+        .view-details-link:hover { color: #ff8fab; }
+        
+        .product p.price { color: #ff9ec6; font-size: 1.4rem; font-weight: bold; margin: 6px 0; }
+        .add-to-cart { background: #ff69b4; color: black !important; border: none; padding: 12px; border-radius: 25px; width: 100%; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: auto; }
+        .add-to-cart:hover { background: white; box-shadow: 0 0 15px rgba(255,105,180,0.6); }
+
+        @media (max-width: 768px) {
+            .header-text h1 { font-size: 2.2rem; }
+            .product img, .product .img-container { height: 200px; }
+            .main-nav ul { top: 40px; gap: 15px; } 
+            .main-nav a { font-size: 0.8rem; }
+            
+            .grille-magique { 
+                grid-template-columns: 1fr; 
+                gap: 15px; 
+                padding: 15px; 
+                justify-items: center;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .product { min-width: auto; max-width: 350px; padding: 15px; }
+            .product h2 { font-size: 1rem; margin-bottom: 10px; }
+            .product-description { font-size: 0.85rem; margin: 8px 0; }
+            .view-details-link { font-size: 0.8rem; margin: 8px 0; }
+            .product-specs { font-size: 0.8rem; }
+            .price { font-size: 1.1rem; margin: 10px 0; }
+            .add-to-cart { padding: 10px; font-size: 0.9rem; }
+            
+            .cat-nav { gap: 8px; padding: 10px; }
+            .filter-btn { padding: 6px 12px; font-size: 0.8rem; }
+            
+            h1 { font-size: 1.6rem !important; margin: 25px 15px 20px !important; }
+        }
+
+        img { max-width: 100% !important; height: auto !important; }
+    </style>
+</head>
+<body>
+    <div id="star-container"></div>
+
+    <div class="shipping-banner">
+        Frais de livraison : 5,90€ | Offerts dès 40€ d'achat ✨
+    </div>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">🏠 Accueil</a></li>
+            <li><a href="envers-du-decor.html">📖 L'envers du décor</a></li>
+            <li><a href="entretien.html">🧼 Entretien</a></li>
+            <li><a href="contact.html">📧 Contact</a></li>
+            <li><span id="cart-toggle-btn" style="
+                color: #ff9ec6 !important; 
+                cursor: pointer; 
+                font-weight: bold; 
+                text-transform: uppercase; 
+                font-size: 1.1rem; 
+                transition: 0.3s;
+                background: rgba(255,105,180,0.2);
+                padding: 8px 16px;
+                border-radius: 25px;
+                border: 2px solid #ff9ec6;
+                display: inline-block;
+                box-shadow: 0 2px 8px rgba(255,202,229,0.3);
+            ">🛒 PANIER (<span id="cart-count">0</span>)</span></li>
+        </ul>
+    </nav>
+
+    <header class="header-magical">
+        <img src="images/logomagepoxy.png" alt="Logo Mag'ical Epoxy" class="logo-img">
+        <div class="header-text">
+            <p>Créations en résine epoxy faites main</p>
+            <p style="font-size: 1.1rem; color: rgba(255,255,255,0.7); margin: 8px 0; font-weight: 400;">Le cadeau original qu'on ne trouve nul par ailleurs</p>
+            <p style="font-size: 1rem; color: rgba(255,255,255,0.6); margin: 8px 0; font-weight: 400;">Chaque création est différente</p>
+        </div>
+    </header>
+
+    <h1 style="text-align: center; font-size: 2.2rem; margin: 40px 20px 30px; color: #ff9ec6; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">
+        ✨ Créations Artisanales Uniques en Résine Époxy ✨
+    </h1>
+
+    <div class="cat-nav">
+        <a href="#all" class="filter-btn active" onclick="filterByCategory('all', this)">Tous les produits</a>
+        <a href="#boite" class="filter-btn" onclick="filterByCategory('boite', this)">Boîtes</a>
+        <a href="#savon" class="filter-btn" onclick="filterByCategory('savon', this)">Porte-savons</a>
+        <a href="#des" class="filter-btn" onclick="filterByCategory('des', this)">Dés</a>
+        <a href="#animal" class="filter-btn" onclick="filterByCategory('animal', this)">Animaux</a>
+        <a href="#zen" class="filter-btn" onclick="filterByCategory('zen', this)">Statuettes</a>
+
+        <select id="priceSort" onchange="sortProductsByPrice(this.value)" class="filter-btn" style="background: rgba(255,105,180,0.2); cursor: pointer;">
+            <option value="default" style="background: #1a0033; color: white;">📂 Trier par prix</option>
+            <option value="asc" style="background: #1a0033; color: white;">Prix croissant (Moins cher)</option>
+            <option value="desc" style="background: #1a0033; color: white;">Prix décroissant (Plus cher)</option>
+        </select>
+    </div> 
+
+    <main class="grille-magique" id="productGrid">
+        
+        <div class="product boite" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🌙 Boîte "Cachette Nocturne"</h2>
+            <div class="img-container"><img src="images/BOITES/BOITE-SERP-001.jpg" alt="Boîte serpent Cachette Nocturne en résine époxy - Création artisanale fait main" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">✨ Un écrin mystérieux pour vos bijoux et secrets</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12 x 10 cm | ⚖️ ~280 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Design mystérieux qui fascine<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+bijoux et souvenirs<br>
+décoration mystique<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="22.00">22,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="BOITE-SERP-001" data-name="Boîte Cachette Nocturne" data-price="22.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product savon" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🌿 PORTE-SAVON "VERT ÉMÉRAUDE"</h2>
+            <div class="img-container"><img src="images/PORT-SAV/PORT-SAV-001.jpg" alt="Porte-savon émeraude" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🌿 Une ambiance naturelle et élégante au quotidien</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12 x 9 cm | ⚖️ ~200 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Éclat tropical qui illumine l'espace<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+déco salle de bain<br>
+ambiance tropicale<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="PORT-SAV-001" data-name="Porte-savon Vert Émeraude" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product savon" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🌙 PORTE-SAVON "BLEU NUIT"</h2>
+            <div class="img-container"><img src="images/PORT-SAV/PORT-SAV-002.jpg" alt="Porte-savon design bleu nuit effet céleste - Décoration artisanale Haute-Vienne" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🌙 Une ambiance apaisante et étoilée au quotidien</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~14 x 10 cm | ⚖️ ~140 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Profondeur nocturne apaisante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+déco salle de bain<br>
+ambiance zen<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="PORT-SAV-002" data-name="Porte-savon Bleu Nuit" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product savon" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">✨ PORTE-SAVON "CRÂNES PAILLETÉS"</h2>
+            <div class="img-container"><img src="images/PORT-SAV/PORT-SAV-003.jpg" alt="Porte-savon style rock crânes pailletés en résine - Objet déco unique Haute-Vienne" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">💀 Une touche rock et brillante pour votre salle de bain</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12 x 9 cm | ⚖️ ~250 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Design original qui attire le regard<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+déco salle de bain<br>
+ambiance rock et unique<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="PORT-SAV-003" data-name="Porte-savon Crânes Pailletés" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product des" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🌙 Dé décoratif "Rêve"</h2>
+            <div class="img-container">
+                <img src="images/DES/DE-001-PART1.jpg" alt="Dé décoratif géant inclusion magique résine - Cadeau artisanal original Haute-Vienne" loading="lazy" itemprop="image">
+                <img src="images/DES/DE-001-PART2.jpg" class="img-hover" alt="Dé Rêve vue 2" loading="lazy">
+            </div>
+            <div class="product-description" itemprop="description">🎲 Une explosion de couleurs qui attire le regard</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~10 x 10 cm | ⚖️ ~400 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Design onirique fascinant<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+bureau et collection<br>
+décoration magique<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="25.00">25,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="DES-001" data-name="Dé décoratif Rêve" data-price="25.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product des" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">⚙️ Dé décoratif "Mécanisme"</h2>
+            <div class="img-container">
+                <img src="images/DES/DE-002-PART1.jpg" alt="Dé décoratif style Steampunk engrenages en résine - Création unique Haute-Vienne" loading="lazy" itemprop="image">
+                <img src="images/DES/DE-002-PART2.jpg" class="img-hover" alt="Capture Mécanique vue 2" loading="lazy">
+            </div>
+            <div class="product-description" itemprop="description">⚙️ Une explosion de couleurs qui attire le regard</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~10 x 10 cm | ⚖️ ~400 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Design steampunk fascinant<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+bureau et collection<br>
+décoration ingénieuse<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="25.00">25,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="DES-002" data-name="Dé décoratif Mécanisme" data-price="25.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product animal" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🔥 Oiseau Plume de Feu et de Nuit</h2>
+            <div class="img-container"><img src="images/ANI/ANI-OIS-001.jpg" alt="Figurine oiseau décoratif en résine couleurs feu - Sculpture artisanale Haute-Vienne" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🔥 Une petite création pleine de charme et de magie</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~11 x 7 cm | ⚖️ ~110 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Design poétique et vibrant<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+décoration artistique<br>
+corner poétique<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ANI-OIS-001" data-name="Oiseau Plume de Feu et de Nuit" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product animal" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🔥 Highland de Braise</h2>
+            <div class="img-container"><img src="images/ANI/ANI-VAC-001.jpg" alt="Figurine vache Highland en résine époxy - Décoration fait main Haute-Vienne" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🔥 Une petite création pleine de charme et de magie</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~8 x 6 cm | ⚖️ ~130 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Énergie puissante et captivante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+décoration authentique<br>
+ambiance Écosse<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00" itemprop="price">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ANI-VAC-001" data-name="Highland de Braise" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product animal" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🌿 Highland Bruyère</h2>
+            <div class="img-container"><img src="images/ANI/ANI-VAC-002.jpg" alt="Figurine vache Highland en résine époxy - Décoration fait main Haute-Vienne" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🌿 Une petite création pleine de charme et de magie</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~8 x 6 cm | ⚖️ ~130 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Élégance naturelle apaisante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+décoration raffinée<br>
+ambiance nature<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ANI-VAC-002" data-name="Highland Bruyère" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product animal" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🦄 Licorne Féérique</h2>
+            <div class="img-container"><img src="images/ANI/ANI-LIC-001.jpg" alt="Licorne" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🦄 Une petite création pleine de charme et de magie</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12 x 5 cm | ⚖️ ~200 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Magie pure et fascinante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+décoration magique<br>
+ambiance féérique<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="22.00">22,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ANI-LIC-001" data-name="Licorne Féérique" data-price="22.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product animal" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🦊 Renard à 9 queues</h2>
+            <div class="img-container"><img src="images/ANI/ANI-R9Q-001.jpg" alt="Kitsune" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🦊 Une petite création pleine de charme et de magie</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~9 x 11 cm | ⚖️ ~210 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Sagesse mystique fascinante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+décoration mythique<br>
+ambiance Japon<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="22.00">22,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ANI-R9Q-001" data-name="Renard à 9 queues" data-price="22.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product zen" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">✨ Statuette Duo de Lumière</h2>
+            <div class="img-container"><img src="images/ST-DUO/ST-DUO-002.jpg" alt="Duo Lumière" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🧘 Une touche artistique et apaisante pour votre intérieur</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~14 x 10 cm | ⚖️ ~115 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Harmonie lumineuse apaisante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+méditation et yoga<br>
+décoration zen<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ST-DUO-002" data-name="Statuette Duo de Lumière" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product zen" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🌙 Statuette Duo Rêve de Nuit</h2>
+            <div class="img-container"><img src="images/ST-DUO/ST-DUO-001.jpg" alt="Rêve Nuit" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🧘 Une touche artistique et apaisante pour votre intérieur</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~14 x 10 cm | ⚖️ ~115 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Mystère nocturne fascinant<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+rêveurs et astronomie<br>
+décoration mystique<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ST-DUO-001" data-name="Statuette Duo Rêve de Nuit" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product zen" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🎨 Statuette CréaZen Fantaisie</h2>
+            <div class="img-container"><img src="images/ST-CRZ/ST-CRZ-001.jpg" alt="CréaZen 1" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🧘 Une touche artistique et apaisante pour votre intérieur</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12.5 x 8 cm | ⚖️ ~90 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Créativité vibrante infinie<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+artistes et créatifs<br>
+décoration moderne<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ST-CRZ-001" data-name="Statuette CréaZen Fantaisie" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product zen" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">☀️ Statuette CréaZen Solaire</h2>
+            <div class="img-container"><img src="images/ST-CRZ/ST-CRZ-002.jpg" alt="CréaZen 2" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🧘 Une touche artistique et apaisante pour votre intérieur</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12.5 x 8 cm | ⚖️ ~90 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Énergie solaire revitalisante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+vitalité et optimisme<br>
+décoration rayonnante<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ST-CRZ-002" data-name="Statuette CréaZen Solaire" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product zen" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🌊 Statuette CréaZen Aluminium</h2>
+            <div class="img-container"><img src="images/ST-CRZ/ST-CRZ-003.jpg" alt="CréaZen Aluminium" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🧘 Une touche artistique et apaisante pour votre intérieur</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12.5 x 8 cm | ⚖️ ~90 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Énergie marine puissante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+amour de l'océan<br>
+décoration aquatique<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ST-CRZ-003" data-name="Statuette CréaZen Aluminium" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product zen" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🌿 Statuette CréaZen Rouge et Or</h2>
+            <div class="img-container"><img src="images/ST-CRZ/ST-CRZ-005.jpg" alt="CréaZen Rouge et Or" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🧘 Une touche artistique et apaisante pour votre intérieur</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12.5 x 8 cm | ⚖️ ~90 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Paix naturelle apaisante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+amour de la nature<br>
+décoration bohème<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ST-CRZ-005" data-name="Statuette CréaZen Rouge et Or" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product zen" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">💎 Statuette CréaZen Rubis</h2>
+            <div class="img-container"><img src="images/ST-CRZ/ST-CRZ-004.jpg" alt="CréaZen 4" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🧘 Une touche artistique et apaisante pour votre intérieur</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12.5 x 8 cm | ⚖️ ~90 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Passion et élégance raffinée<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+esprit chic et élégant<br>
+décoration luxueuse<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ST-CRZ-004" data-name="Statuette CréaZen Rubis" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product zen" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🔥 Statuette CréaZen Rouge Eclat</h2>
+            <div class="img-container"><img src="images/ST-CRZ/ST-CRZ-006.jpg" alt="CréaZen 6" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🧘 Une touche artistique et apaisante pour votre intérieur</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12.5 x 8 cm | ⚖️ ~90 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Créativité explosive et vibrante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+esprit artiste et créatif<br>
+décoration dynamique<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ST-CRZ-006" data-name="Statuette CréaZen Rouge Eclat" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product zen" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">🍂 Statuette CréaZen Automne</h2>
+            <div class="img-container"><img src="images/ST-CRZ/ST-CRZ-007.jpg" alt="CréaZen 7" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🧘 Une touche artistique et apaisante pour votre intérieur</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12.5 x 8 cm | ⚖️ ~90 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Chaleur automnale réconfortante<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+ambiance cocooning<br>
+décoration chaleureuse<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ST-CRZ-007" data-name="Statuette CréaZen Automne" data-price="15.00">Ajouter au panier</button>
+        </div>
+
+        <div class="product zen" itemscope itemtype="https://schema.org/Product">
+            <h2 itemprop="name">💧 Statuette CréaZen Bubble</h2>
+            <div class="img-container"><img src="images/ST-CRZ/ST-CRZ-008.jpg" alt="CréaZen 8" loading="lazy" itemprop="image"></div>
+            <div class="product-description" itemprop="description">🧘 Une touche artistique et apaisante pour votre intérieur</div>
+            <span class="view-details-link" onclick="toggleProductDetails(this)">🔽 Voir les détails</span>
+            <div class="product-details-container">
+                <div class="product-specs">📏 ~12.5 x 8 cm | ⚖️ ~90 g</div>
+                <div class="product-details">
+                    <strong>💎 Pourquoi vous allez l'adorer :</strong><br>
+✔ Effet bulles rafraîchissant<br>
+✔ Pièce unique<br>
+✔ Résine solide et brillante<br>
+✔ Idéal pour offrir 🎁<br><br>
+                    <strong>🎁 Parfait pour :</strong><br>
+cadeau original<br>
+déco moderne<br>
+ambiance légère<br>
+                </div>
+            </div>
+            <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <p class="price"><span itemprop="price" content="15.00">15,00 €</span></p>
+                <meta itemprop="priceCurrency" content="EUR">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="itemCondition" content="https://schema.org/NewCondition">
+            </div>
+            <button class="add-to-cart" data-id="ST-CRZ-008" data-name="Statuette CréaZen Bubble" data-price="15.00">Ajouter au panier</button>
+        </div>
+    </main>
+
+    <!-- Script de tri, de filtrage par catégorie et de gestion du panier -->
+    <script>
+        function filterByCategory(category, element) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if(element) element.classList.add('active');
+
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                if (category === 'all') {
+                    if (product.getAttribute('data-sold') !== 'true') {
+                        product.classList.remove('hidden');
+                    }
+                } else {
+                    if (product.classList.contains(category) && product.getAttribute('data-sold') !== 'true') {
+                        product.classList.remove('hidden');
+                    } else {
+                        product.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        function sortProductsByPrice(order) {
+            const grid = document.getElementById('productGrid');
+            if (!grid) return;
+            const products = Array.from(grid.getElementsByClassName('product'));
+
+            products.sort((a, b) => {
+                const priceA = parseFloat(a.querySelector('[itemprop="price"]').getAttribute('content') || a.querySelector('.price').textContent);
+                const priceB = parseFloat(b.querySelector('[itemprop="price"]').getAttribute('content') || b.querySelector('.price').textContent);
+
+                if (order === 'asc') return priceA - priceB;
+                if (order === 'desc') return priceB - priceA;
+                return 0;
+            });
+
+            products.forEach(product => grid.appendChild(product));
+        }
+
+        function toggleProductDetails(link) {
+            const container = link.nextElementSibling;
+            if (container && container.classList.contains('product-details-container')) {
+                container.classList.toggle('visible');
+                link.textContent = container.classList.contains('visible') ? '🔼 Masquer les détails' : '🔽 Voir les détails';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                if (product.getAttribute('data-sold') === 'true') {
+                    product.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+
+
+<!-- Fenêtre modale du Panier (Ne modifie pas le catalogue) -->
+<div id="cartModal" style="display: none; position: fixed; top: 0; right: 0; width: 100%; max-width: 420px; height: 100vh; background: #121212; z-index: 9999; box-shadow: -5px 0 25px rgba(0,0,0,0.8); overflow-y: auto; padding: 25px; box-sizing: border-box; border-left: 2px solid #ff69b4;">
+    
+    <!-- En-tête du volet -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid rgba(255,105,180,0.3); padding-bottom: 15px; margin-bottom: 20px;">
+        <h3 style="color: #ff9ec6; margin: 0; font-size: 1.3rem;">🛒 Votre Panier</h3>
+        <button class="cart-modal-close" style="background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; line-height: 1;">&times;</button>
+    </div>
+
+    <!-- Zone dynamique remplie par cart.js -->
+    <div id="cartItems"></div>
+
+    <!-- Pied de panier avec Total et Bouton Modifier/Payer -->
+    <div style="margin-top: 25px; border-top: 2px solid rgba(255,105,180,0.3); padding-top: 15px;">
+        <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; color: white; margin-bottom: 20px;">
+            <span>Total :</span>
+            <span id="cartTotal" style="color: #ff9ec6;">0,00 €</span>
+        </div>
+        <button onclick="cart.checkout()" style="width: 100%; background: #ff69b4; color: black; border: none; padding: 14px; border-radius: 25px; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 15px rgba(255,105,180,0.4);">
+            💳 Valider la commande
+        </button>
+    </div>
+</div>
+
+
+</body>
+</html>

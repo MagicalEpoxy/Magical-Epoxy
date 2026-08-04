@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales | Mag'ical Epoxy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background: linear-gradient(135deg, #000000 0%, #1a0033 20%, #2d1b69 40%, #4a148c 60%, #311b92 80%, #000000 100%);
+            background-attachment: fixed;
+            color: white; 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+            overflow-x: hidden; 
+        }
+        .shipping-banner { background: #ff69b4; color: black; text-align: center; padding: 10px; font-weight: bold; font-size: 0.9rem; position: sticky; top: 0; z-index: 110; }
+        .main-nav ul { display: flex; justify-content: center; list-style: none; padding: 20px; background: rgba(0,0,0,0.8); margin: 0; position: sticky; top: 40px; z-index: 100; gap: 20px; }
+        .main-nav a { text-decoration: none; color: white !important; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
+        .header-magical { display: flex; align-items: center; justify-content: center; padding: 40px 20px; gap: 25px; position: relative; z-index: 10; }
+        .logo-img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #ff69b4; object-fit: cover; }
+        .container-cgv { flex: 1; width: 90%; max-width: 900px; margin: 40px auto; background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 20px; border-left: 5px solid #ff69b4; border-bottom: 5px solid #ff69b4; position: relative; z-index: 10; }
+        h1 { color: #ff9ec6; font-size: 2rem; text-align: center; text-transform: uppercase; margin-bottom: 40px; }
+        h2 { color: #ff9ec6; font-size: 1.4rem; margin-top: 40px; text-transform: uppercase; }
+        p, li { line-height: 1.6; font-size: 1.1rem; color: #f0f0f0; text-align: justify; }
+        strong { color: #ff9ec6; }
+        #star-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .star { position: absolute; border-radius: 50%; background: white; opacity: 0.5; width: 2px; height: 2px; }
+
+        /* --- CSS RESPONSIVE POUR LES IMAGES --- */
+        .container-cgv img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            /* Force les images à prendre toute la largeur sur petit écran pour éviter que le texte ne soit écrasé sur le côté */
+            .container-cgv div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="star-container"></div>
+    <div class="shipping-banner">Frais de port fixes : 5,90€ | Offerts dès 40€ d'achat ✨</div>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">🏠 Accueil</a></li>
+            <li><a href="envers-du-decor.html">📖 L'envers du décor</a></li>
+            <li><a href="entretien.html">🧼 Entretien</a></li>
+            <li><a href="contact.html">📧 Contact</a></li>
+        </ul>
+    </nav>
+    <header class="header-magical">
+        <img src="images/logomagepoxy.png" alt="Logo" class="logo-img">
+        <div class="header-text">
+            <h1 style="margin:0; border:none;">Mentions légales</h1>
+        </div>
+    </header>
+    <main class="container-cgv">
+        <h2>1. Éditeur du site</h2>
+        <p>Le site <strong>magical-epoxy.fr</strong> est édité par :</p>
+        <ul>
+            <li><strong>Nom :</strong> Magali AZAMA</li>
+            <li><strong>Statut :</strong> Auto-Entrepreneur (Micro-entrepreneur)</li>
+            <li><strong>SIRET :</strong> 941 464 059 00018</li>
+            <li><strong>Adresse :</strong> 1 allée des Bouvreuils — 87570 Rilhac-Rancon</li>
+            <li><strong>Email :</strong> <a href="mailto:mag-epoxy@gmx.fr" style="color:#ff9ec6;">mag-epoxy@gmx.fr</a></li>
+        </ul>
+
+        <h2>2. Hébergeur</h2>
+        <p>Site hébergé par Cloudflare, Inc.</p>
+        <ul>
+            <li>101 Townsend St, San Francisco, CA 94107, États-Unis</li>
+            <li><strong>Site :</strong> cloudflare.com</li>
+        </ul>
+
+        <h2>3. Propriété intellectuelle</h2>
+        <p>L'ensemble du contenu du site (textes, photographies, créations, logo, design, structure) est protégé par le droit d'auteur et reste la propriété exclusive de Magali Azama / Mag'ical Epoxy.</p>
+        <p>Toute reproduction, représentation, diffusion, modification ou exploitation, totale ou partielle, de ce contenu sans autorisation écrite préalable est strictement interdite et constitue une contrefaçon sanctionnée par le Code de la propriété intellectuelle.</p>
+
+        <h2>4. Données personnelles & RGPD</h2>
+        <p>Les données personnelles collectées via le site (formulaire de contact, commandes) sont utilisées exclusivement dans le cadre de la relation commerciale avec le client.</p>
+        <p>Elles ne sont jamais transmises à des tiers à des fins commerciales.</p>
+        <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'opposition et de suppression de vos données personnelles.</p>
+        <p>Pour exercer ces droits, contactez : <a href="mailto:mag-epoxy@gmx.fr" style="color:#ff9ec6;">mag-epoxy@gmx.fr</a></p>
+
+        <h2>5. Cookies</h2>
+        <p>Ce site peut utiliser des cookies techniques nécessaires à son bon fonctionnement. Aucun cookie de traçage publicitaire ou de profilage n'est utilisé.</p>
+
+        <h2>6. Responsabilité</h2>
+        <p>Mag'ical Epoxy s'efforce de maintenir les informations du site à jour et exactes, mais ne peut être tenu responsable des erreurs, omissions ou d'une indisponibilité temporaire du site.</p>
+        <p>Les liens hypertextes présents sur le site peuvent mener vers des sites tiers dont le contenu n'engage pas la responsabilité de l'éditeur.</p>
+    </main>
+
+    <!-- Inclusion du footer unique -->
+    <footer style="padding: 60px 40px 30px; margin-top: 50px; border-top: 2px solid rgba(255,105,180,0.3); position: relative; z-index: 10; background: linear-gradient(180deg, rgba(255,105,180,0.05) 0%, transparent 100%);">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left;">
+            
+            <!-- Logo et description -->
+            <div>
+                <h3 style="color: #ff9ec6; font-size: 1.4rem; margin-bottom: 15px;">✨ Mag'ical Epoxy</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; text-align: justify; margin: 0;">
+                    Créations artisanales uniques en résine époxy, faites main.
+                    Chaque pièce est unique et raconte une histoire.
+                </p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 15px; text-align: justify;">
+                    🎁 Le cadeau original qu'on ne trouve nul par ailleurs
+                </p>
+            </div>
+            
+            <!-- Navigation rapide -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Navigation</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 8px;"><a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem;">🏠 Boutique</a></li>
+                    <li style="margin-bottom: 8px;"><a href="envers-du-decor.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem;">📖 L'envers du décor</a></li>
+                    <li style="margin-bottom: 8px;"><a href="entretien.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem;">🧼 Entretien</a></li>
+                    <li style="margin-bottom: 8px;"><a href="contact.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem;">📧 Contact</a></li>
+                    <li style="margin-bottom: 8px;"><a href="cgv.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem;">📋 CGV</a></li>
+                    <li style="margin-bottom: 8px;"><a href="mentions-legales.html" style="color: #ff9ec6; text-decoration: none; font-size: 0.9rem;">⚖️ Mentions Légales</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Contact</h4>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                    Une question ? Un projet personnalisé ?<br>
+                    N'hésitez pas à me contacter !
+                </p>
+                <a href="contact.html" style="display: inline-block; color: #ff9ec6; text-decoration: none; border: 2px solid #ff9ec6; padding: 10px 20px; border-radius: 25px; font-size: 0.9rem; font-weight: 600;">
+                    📧 Me contacter
+                </a>
+            </div>
+            
+            <!-- Informations -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Informations</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">📍 Haute-Vienne (15 min de Limoges)</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">🚚 Livraison France</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">📦 Frais de port : 5,90€</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">✨ Offerts dès 40€ d'achat</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">🔒 Paiement sécurisé</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Copyright -->
+        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,105,180,0.2);">
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; margin: 0; text-align: center;">
+                © 2026 <strong style="color: #ff9ec6;">Mag'ical Epoxy</strong> - Tous droits réservés<br>
+                <span style="font-size: 0.75rem;">Artisanat d'art en résine époxy • Haute-Vienne, France</span>
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Le script des étoiles reste ici... (identique à ton original)
+        const container = document.getElementById('star-container');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = `star star-small`;
+            star.style.backgroundColor = '#ffffff';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            container.appendChild(star);
+        }
+    </script>
+</body>
+</html>

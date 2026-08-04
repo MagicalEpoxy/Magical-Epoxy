@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Conseils d'Entretien | Préserver vos créations Mag'ical Epoxy - Haute-Vienne</title>
+    <meta name="description" content="Comment nettoyer et conserver l'éclat de vos objets en résine époxy ? Découvrez les conseils d'entretien de Mag'ical Epoxy pour vos statuettes et bijoux faits main.">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- STYLE GLOBAL --- */
+        body { 
+            background: linear-gradient(135deg, #000000 0%, #1a0033 20%, #2d1b69 40%, #4a148c 60%, #311b92 80%, #000000 100%);
+            background-attachment: fixed;
+            color: white; 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            overflow-x: hidden; 
+        }
+
+        /* --- NAVIGATION --- */
+        .main-nav ul { display: flex; justify-content: center; list-style: none; padding: 20px; background: rgba(0,0,0,0.9); margin: 0; position: sticky; top: var(--shipping-banner-height, 44px); z-index: 100; gap: 20px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,105,180,0.2); }
+        .main-nav a { text-decoration: none; color: white !important; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+        .main-nav a:hover { color: #ff9ec6 !important; }
+
+        /* --- HEADER --- */
+        .header-magical { display: flex; align-items: center; justify-content: center; padding: 60px 20px; gap: 25px; flex-wrap: wrap; position: relative; z-index: 10; }
+        .logo-img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
+        .header-text h1 { font-size: 3rem; margin: 0; letter-spacing: 2px; color: white; }
+        .header-text p { font-family: 'Quicksand', sans-serif; font-size: 1.4rem; color: rgba(255,255,255,0.8); margin: 0; font-weight: 500; }
+
+        /* --- CONTENEUR --- */
+        .page-entretien { width: 90%; max-width: 1000px; margin: 40px auto; position: relative; z-index: 10; display: flex; flex-direction: column; gap: 60px; }
+
+        /* --- RANGÉES --- */
+        .entretien-row { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+        .entretien-row.reverse { flex-direction: row-reverse; }
+
+        .box-entretien { flex: 1; min-width: 320px; background: rgba(255, 255, 255, 0.05); padding: 35px; border-radius: 25px; border: 1px solid rgba(255, 105, 180, 0.2); border-left: 6px solid #ff69b4; border-bottom: 5px solid #ff69b4; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .box-entretien h3 { color: #ff9ec6 !important; margin-top: 0; font-size: 1.5rem; font-family: 'Quicksand', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .box-entretien p { line-height: 1.7; color: rgba(255,255,255,0.9); }
+        .box-entretien ul { list-style: none; padding: 0; }
+        .box-entretien ul li { margin-bottom: 15px; line-height: 1.6; padding-left: 25px; position: relative; }
+        .box-entretien ul li::before { content: "✨"; position: absolute; left: 0; top: 0; color: #ff9ec6; }
+
+        /* --- IMAGES --- */
+        .float-image { flex: 1; min-width: 250px; text-align: center; }
+        .float-image img { 
+            width: 100%; 
+            max-width: 320px;
+            height: auto; 
+            filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.4)); 
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        }
+        .float-image img:hover { transform: scale(1.1) rotate(5deg); }
+
+        /* --- CTA --- */
+        .cta-container { text-align: center; margin-top: 40px; }
+
+        /* --- ÉTOILES MAGIQUES --- */
+        #star-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+        .star { position: absolute; border-radius: 50%; opacity: 0.6; }
+        .star-small { width: 1px; height: 1px; }
+        .star-medium { width: 2px; height: 2px; box-shadow: 0 0 2px currentColor; }
+        .star-large { width: 3px; height: 3px; box-shadow: 0 0 4px currentColor; }
+        .star-xl { width: 4px; height: 4px; box-shadow: 0 0 6px 1px currentColor; }
+        
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
+        @keyframes drift-slow { from { transform: translateX(0) translateY(0); } to { transform: translateX(100px) translateY(-50px); } }
+        @keyframes drift-medium { from { transform: translateX(0) translateY(0); } to { transform: translateX(-80px) translateY(-80px); } }
+        @keyframes drift-fast { from { transform: translateX(0) translateY(0); } to { transform: translateX(150px) translateY(-30px); } }
+
+        @media (max-width: 768px) {
+            .entretien-row, .entretien-row.reverse { flex-direction: column; text-align: center; gap: 30px; }
+            .box-entretien { border-left: none; border-top: 5px solid #ff69b4; min-width: 100%; }
+            .header-text h1 { font-size: 2.2rem; }
+            
+            /* Footer mobile en 1 colonne */
+            footer > div[style*="grid"] {
+                grid-template-columns: 1fr !important;
+                gap: 25px !important;
+                text-align: center !important;
+                padding: 0 20px !important;
+            }
+            
+            footer h3, footer h4 {
+                font-size: 1.2rem !important;
+            }
+            
+            footer p, footer li {
+                font-size: 0.85rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-text h1 { font-size: 1.8rem; }
+            .main-nav ul { 
+                gap: 8px !important; 
+                padding: 12px 8px !important; 
+                font-size: 0.75rem !important;
+            }
+            
+            .box-entretien {
+                padding: 20px !important;
+            }
+            
+            .box-entretien h3 {
+                font-size: 1.1rem !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .box-entretien p {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
+            }
+        }
+
+        /* Force TOUTES les images à ne jamais dépasser de l'écran */
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+
+        /* Sur mobile (téléphones) */
+        @media (max-width: 768px) {
+            /* On force tous les éléments qui sont côte à côte à se mettre l'un sous l'autre */
+            .container-cgv div, 
+            .header-magical,
+            main section {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            /* On enlève les marges qui poussent l'image sur le côté */
+            .container-cgv img {
+                margin: 20px 0 !important;
+                float: none !important;
+                width: 100% !important; /* L'image prend toute la largeur du cadre rose */
+            }
+            
+            /* On ajuste le texte pour qu'il ne soit plus compressé */
+            p, li {
+                font-size: 1rem !important;
+                text-align: left !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="star-container"></div>
+    <div class="shipping-banner">
+        <div class="shipping-banner__inner">
+            <span>Frais de port fixes : 5,90€</span> | <span>Offerts dès 40€ d'achat ✨</span>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">🏠 Accueil</a></li>
+            <li><a href="envers-du-decor.html">📖 L'envers du décor</a></li>
+            <li><a href="entretien.html">🧼 Entretien</a></li>
+            <li><a href="contact.html">📧 Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="header-magical">
+        <img src="images/logomagepoxy.png" alt="Logo Mag'ical Epoxy" class="logo-img">
+        <div class="header-text">
+            <h1 style="color: #ff9ec6; font-family: 'Quicksand', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Entretien de vos <span>Résines</span></h1>
+        </div>
+    </header>
+
+    <main class="page-entretien">
+        
+        <!-- Photos en style écusson comme sur envers du décor -->
+        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
+            <div style="text-align: center;">
+                <img src="images/ENTRETIEN/Déco.png" alt="Précautions d'usage objets résine - Mag'ical Epoxy" style="width: 180px; height: 180px; border-radius: 10px; border: 3px solid #ff9ec6; object-fit: cover; box-shadow: 0 0 15px rgba(255,158,198,0.3); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease;" onclick="if(this.style.transform=='scale(1.6)'){this.style.transform='scale(1)'}else{this.style.transform='scale(1.6)'}">
+            </div>
+            <div style="text-align: center;">
+                <img src="images/ENTRETIEN/Grenouille.png" alt="Conseils entretien résine grenouille artisanale - Mag'ical Epoxy" style="width: 180px; height: 180px; border-radius: 10px; border: 3px solid #ff9ec6; object-fit: cover; box-shadow: 0 0 15px rgba(255,158,198,0.3); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease;" onclick="if(this.style.transform=='scale(1.6)'){this.style.transform='scale(1)'}else{this.style.transform='scale(1.6)'}">
+            </div>
+            <div style="text-align: center;">
+                <img src="images/ENTRETIEN/lic.png" alt="Licence fabrication artisanale - Mag'ical Epoxy" style="width: 180px; height: 180px; border-radius: 10px; border: 3px solid #ff9ec6; object-fit: cover; box-shadow: 0 0 15px rgba(255,158,198,0.3); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease;" onclick="if(this.style.transform=='scale(1.6)'){this.style.transform='scale(1)'}else{this.style.transform='scale(1.6)'}">
+            </div>
+            <div style="text-align: center;">
+                <img src="images/ENTRETIEN/Scarab.png" alt="Scarabée résine artisanale - Mag'ical Epoxy" style="width: 180px; height: 180px; border-radius: 10px; border: 3px solid #ff9ec6; object-fit: cover; box-shadow: 0 0 15px rgba(255,158,198,0.3); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease;" onclick="if(this.style.transform=='scale(1.6)'){this.style.transform='scale(1)'}else{this.style.transform='scale(1.6)'}">
+            </div>
+            <div style="text-align: center;">
+                <img src="images/ENTRETIEN/insecte.png" alt="Insecte résine artisanale - Mag'ical Epoxy" style="width: 180px; height: 180px; border-radius: 10px; border: 3px solid #ff9ec6; object-fit: cover; box-shadow: 0 0 15px rgba(255,158,198,0.3); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease;" onclick="if(this.style.transform=='scale(1.6)'){this.style.transform='scale(1)'}else{this.style.transform='scale(1.6)'}">
+            </div>
+        </div>
+
+        <div class="entretien-row">
+            <div class="box-entretien">
+                <h3>✨ L'Éclat Éternel</h3>
+                <p>La <strong>résine époxy</strong> est un matériau noble, robuste et durable. Cependant, pour que vos <strong>statuettes</strong> et vos figurines conservent leur transparence cristalline et leurs couleurs vibrantes, elles demandent quelques attentions particulières.</p>
+                <p>En suivant ces conseils de fabrication artisanale, vous assurez à vos objets une brillance qui ne ternira pas avec les années.</p>
+            </div>
+        </div>
+
+        <div class="entretien-row">
+            <div class="box-entretien">
+                <h3>⚠️ À Éviter Absolument</h3>
+                <ul>
+                    <li><strong>Le soleil direct :</strong> Ne pas exposer vos créations en plein soleil, même brièvement. Préférez un emplacement lumineux mais à l'abri des rayons directs.</li>
+                    <li><strong>Les rayons UV :</strong> Une exposition directe et prolongée au soleil peut provoquer un jaunissement prématuré. Préférez une place à l'ombre ou sous une lumière intérieure douce.</li>
+                    <li><strong>Les fortes chaleurs :</strong> La résine peut se ramollir si elle est exposée à plus de 50°C. Ne placez jamais vos objets près d'un radiateur ou d'une cheminée.</li>
+                    <li><strong>Produits corrosifs :</strong> Le parfum, l'alcool et les solvants sont les ennemis de la résine. Ils peuvent ternir la surface de façon irréversible.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="entretien-row">
+            <div class="box-entretien">
+                <h3>🧽 Nettoyage & Douceur</h3>
+                <p>Pour retirer la poussière ou les traces de manipulation sur vos <strong>créations artisanales</strong> :</p>
+                <ul>
+                    <li>Utilisez uniquement un <strong>chiffon microfibre</strong> propre et sec.</li>
+                    <li>Si besoin, utilisez un peu d'eau tiède avec une goutte de savon neutre (type savon de Marseille).</li>
+                    <li>Essuyez toujours avec un chiffon sec pour éviter les dépôts de calcaire qui masqueraient la brillance.</li>
+                    <li>Évitez absolument les éponges à récurer qui rayeraient la surface définitivement.</li>
+                </ul>
+                <p style="margin-top: 20px; padding: 15px; background: rgba(255,202,229,0.1); border-radius: 10px; border-left: 4px solid #ff9ec6;">
+                    💎 <strong>Astuce :</strong> Avec le temps, une légère perte de brillance peut apparaître. Une goutte d'huile de bébé sur un chiffon microfibre, et vos créations retrouveront leur éclat d'origine ! ✨
+                </p>
+            </div>
+        </div>
+
+        <div class="entretien-row">
+            <div class="box-entretien">
+                <h3>🍽️ Non destiné au contact alimentaire</h3>
+                <p>Les résines utilisées par Mag'ical Epoxy ne sont pas destinées au contact alimentaire. Vos créations sont des objets décoratifs — elles ne doivent pas être utilisées comme contenant pour de la nourriture ou des boissons, ni être léchées ou ingérées.</p>
+            </div>
+        </div>
+
+        <div class="entretien-row">
+            <div class="box-entretien">
+                <h3>👶 Sécurité & Enfants</h3>
+                <p>Les créations Mag'ical Epoxy sont des objets décoratifs pour adultes. Ne pas laisser à la portée des enfants de moins de 3 ans. En cas d'ingestion accidentelle, consultez immédiatement un médecin ou le centre antipoison.</p>
+            </div>
+        </div>
+
+        <div class="cta-container">
+            <div class="box-entretien" style="border-left: 6px solid #ff69b4; border-bottom: 5px solid #ff69b4; margin-bottom: 30px;">
+                <h3>💡 Le saviez-vous ?</h3>
+                <p>Chaque objet <strong>Mag'ical Epoxy</strong> est coulé à la main à 15 minutes de <strong>Limoges</strong>. La résine que j'utilise est sélectionnée pour sa haute résistance, mais elle reste une matière "vivante" qui réagit à son environnement.</p>
+            </div>
+        </div>
+
+        
+    </main>
+
+    <footer style="padding: 60px 40px 30px; margin-top: 50px; border-top: 2px solid rgba(255,105,180,0.3); position: relative; z-index: 10; background: linear-gradient(180deg, rgba(255,105,180,0.05) 0%, transparent 100%);">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left;">
+            
+            <!-- Logo et description -->
+            <div>
+                <h3 style="color: #ff9ec6; font-size: 1.4rem; margin-bottom: 15px;">✨ Mag'ical Epoxy</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; text-align: justify;">
+                    Créations artisanales uniques en résine époxy, faites main.
+                    Chaque pièce est unique et raconte une histoire.
+                </p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 15px; text-align: justify;">
+                    🎁 Le cadeau original qu'on ne trouve nul par ailleurs
+                </p>
+            </div>
+            
+            <!-- Navigation rapide -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Navigation</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 8px;"><a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">🏠 Boutique</a></li>
+                    <li style="margin-bottom: 8px;"><a href="envers-du-decor.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📖 L'envers du décor</a></li>
+                    <li style="margin-bottom: 8px;"><a href="entretien.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">🧼 Entretien</a></li>
+                    <li style="margin-bottom: 8px;"><a href="contact.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📧 Contact</a></li>
+                    <li style="margin-bottom: 8px;"><a href="cgv.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📋 CGV</a></li>
+                    <li style="margin-bottom: 8px;"><a href="mentions-legales.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">⚖️ Mentions Légales</a></li>
+                </ul>
+            </div>
+            
+            <!-- Informations -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Informations</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">📍 Haute-Vienne (15 min de Limoges)</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">🚚 Livraison France</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">📦 Frais de port : 5,90€</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">✨ Offerts dès 40€ d'achat</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">🔒 Paiement sécurisé</li>
+                </ul>
+            </div>
+            
+            <!-- Contact -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Contact</h4>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                    Une question ? Un projet personnalisé ?<br>
+                    N'hésite pas à me contacter !
+                </p>
+                <a href="contact.html" style="display: inline-block; color: #ff9ec6; text-decoration: none; border: 2px solid #ff9ec6; padding: 10px 20px; border-radius: 25px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s;">
+                    📧 Me contacter
+                </a>
+            </div>
+            
+        </div>
+        
+        <!-- Copyright -->
+        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,105,180,0.2);">
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">
+                © 2026 <strong style="color: #ff9ec6;">Mag'ical Epoxy</strong> - Tous droits réservés<br>
+                <span style="font-size: 0.75rem;">Artisanat d'art en résine époxy • Haute-Vienne, France</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Étoiles magiques avec mouvement
+        const container = document.getElementById('star-container');
+        const starColors = ['#ffffff', '#ff9ec6', '#ffb8e0', '#ffc4d6'];
+        const starSizes = ['star-small', 'star-medium', 'star-large', 'star-xl'];
+        const driftAnimations = ['drift-slow', 'drift-medium', 'drift-fast'];
+        
+        // 150 étoiles avec différentes tailles et mouvements
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            
+            // Choix aléatoire de la taille (plus de petites étoiles)
+            const sizeRandom = Math.random();
+            let sizeClass;
+            if (sizeRandom < 0.5) sizeClass = 'star-small';
+            else if (sizeRandom < 0.75) sizeClass = 'star-medium';
+            else if (sizeRandom < 0.9) sizeClass = 'star-large';
+            else sizeClass = 'star-xl';
+            
+            star.className = `star ${sizeClass}`;
+            
+            // Couleur aléatoire
+            star.style.backgroundColor = starColors[Math.floor(Math.random() * starColors.length)];
+            star.style.color = star.style.backgroundColor;
+            
+            // Position aléatoire (dépassant l'écran pour le mouvement)
+            star.style.left = Math.random() * 120 - 10 + '%';
+            star.style.top = Math.random() * 120 - 10 + '%';
+            
+            // Animation combinée: clignotement + dérive
+            const twinkleDuration = Math.random() * 4 + 2;
+            const twinkleDelay = Math.random() * 5;
+            const driftDuration = Math.random() * 20 + 15;
+            const driftDelay = Math.random() * 10;
+            const driftDirection = Math.random() > 0.5 ? '' : 'reverse';
+            const driftAnimation = driftAnimations[Math.floor(Math.random() * driftAnimations.length)];
+            
+            star.style.animation = `twinkle ${twinkleDuration}s ${twinkleDelay}s infinite ease-in-out, ${driftAnimation} ${driftDuration}s ${driftDelay}s linear infinite ${driftDirection}`;
+            
+            container.appendChild(star);
+        }
+    </script>
+</body>
+</html>

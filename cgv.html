@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGV & Mentions Légales - Mag'ical Epoxy</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- STYLE GLOBAL --- */
+        body { 
+            background: linear-gradient(135deg, #000000 0%, #1a0033 20%, #2d1b69 40%, #4a148c 60%, #311b92 80%, #000000 100%);
+            background-attachment: fixed;
+            color: white; 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            overflow-x: hidden; 
+        }
+
+        /* --- BANNIÈRE LIVRAISON --- */
+        .shipping-banner {
+            background: #ff69b4;
+            color: black;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            position: sticky;
+            top: 0;
+            z-index: 110;
+            box-shadow: 0 2px 10px rgba(255,105,180,0.3);
+        }
+
+        /* --- NAVIGATION --- */
+        .main-nav ul { 
+            display: flex; 
+            justify-content: center; 
+            list-style: none; 
+            padding: 20px; 
+            background: rgba(0,0,0,0.8); 
+            margin: 0; 
+            position: sticky; 
+            top: 40px; /* Aligné sous la bannière */
+            z-index: 100; 
+            gap: 20px; 
+            flex-wrap: wrap;
+        }
+        .main-nav a { 
+            text-decoration: none; 
+            color: white !important; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            font-size: 0.9rem; 
+        }
+        .main-nav a:hover { color: #ff9ec6 !important; }
+
+        /* --- HEADER --- */
+        .header-magical { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 40px 20px; 
+            gap: 25px; 
+            flex-wrap: wrap; 
+            position: relative; 
+            z-index: 10; 
+        }
+        .logo-img { 
+            width: 120px; 
+            height: 120px; 
+            object-fit: cover; 
+        }
+        .header-text h1 { font-size: 2.5rem; margin: 0; letter-spacing: 2px; color: white; }
+        .header-text p { font-family: 'Quicksand', sans-serif; font-size: 1.3rem; color: rgba(255,255,255,0.8); margin: 0; font-weight: 500; }
+
+        /* --- CONTENU --- */
+        .container-cgv { 
+            width: 90%; 
+            max-width: 900px; 
+            margin: 40px auto; 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 40px; 
+            border-radius: 20px; 
+            border-left: 5px solid #ff69b4;
+            border-bottom: 5px solid #ff69b4;
+            position: relative; 
+            z-index: 10; 
+        }
+
+        h1 { color: #ff9ec6; font-size: 2.2rem; padding-bottom: 15px; margin-bottom: 30px; text-align: center; font-family: 'Quicksand', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        h2 { color: #ff9ec6; font-family: 'Quicksand', sans-serif; font-size: 1.4rem; margin-top: 40px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        p, li { line-height: 1.6; font-size: 1.1rem; color: #f0f0f0; text-align: justify; }
+        strong { color: #ff9ec6; }
+        
+        #star-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+        .star { position: absolute; border-radius: 50%; opacity: 0.6; }
+        .star-small { width: 1px; height: 1px; }
+        .star-medium { width: 2px; height: 2px; box-shadow: 0 0 2px currentColor; }
+        .star-large { width: 3px; height: 3px; box-shadow: 0 0 4px currentColor; }
+        .star-xl { width: 4px; height: 4px; box-shadow: 0 0 6px 1px currentColor; }
+        
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
+        @keyframes drift-slow { from { transform: translateX(0) translateY(0); } to { transform: translateX(100px) translateY(-50px); } }
+        @keyframes drift-medium { from { transform: translateX(0) translateY(0); } to { transform: translateX(-80px) translateY(-80px); } }
+        @keyframes drift-fast { from { transform: translateX(0) translateY(0); } to { transform: translateX(150px) translateY(-30px); } }
+
+        @media (max-width: 600px) {
+            .header-text h1 { font-size: 1.8rem; }
+            .container-cgv { padding: 20px; }
+            h1 { font-size: 1.5rem; }
+            
+            /* Footer mobile en 1 colonne */
+            footer > div[style*="grid"] {
+                grid-template-columns: 1fr !important;
+                gap: 25px !important;
+                text-align: center !important;
+                padding: 0 20px !important;
+            }
+            
+            footer h3, footer h4 {
+                font-size: 1.2rem !important;
+            }
+            
+            footer p, footer li {
+                font-size: 0.85rem !important;
+            }
+        }
+
+        /* Force TOUTES les images à ne jamais dépasser de l'écran */
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+
+        /* Sur mobile (téléphones) */
+        @media (max-width: 768px) {
+            /* On force tous les éléments qui sont côte à côte à se mettre l'un sous l'autre */
+            .container-cgv div, 
+            .header-magical,
+            main section {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            /* On enlève les marges qui poussent l'image sur le côté */
+            .container-cgv img {
+                margin: 20px 0 !important;
+                float: none !important;
+                width: 100% !important; /* L'image prend toute la largeur du cadre rose */
+            }
+            
+            /* On ajuste le texte pour qu'il ne soit plus compressé */
+            p, li {
+                font-size: 1rem !important;
+                text-align: left !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="star-container"></div>
+    
+    <div class="shipping-banner">
+        Frais de port fixes : 5,90€ | Offerts dès 40€ d'achat ✨
+    </div>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">🏠 Accueil</a></li>
+            <li><a href="envers-du-decor.html">📖 L'envers du décor</a></li>
+            <li><a href="entretien.html">🧼 Entretien</a></li>
+            <li><a href="contact.html">📧 Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="header-magical">
+        <img src="images/logomagepoxy.png" alt="Logo Mag'ical Epoxy" class="logo-img">
+        <div class="header-text">
+            <h1 style="color: #ff9ec6; font-family: 'Quicksand', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Conditions <span>Générales de Ventes</span></h1>
+        </div>
+    </header>
+
+    <main class="container-cgv">
+                <p style="text-align: center; color: rgba(255,255,255,0.7); margin-bottom: 40px;">Dernière mise à jour : mai 2026</p>
+
+        <h2>1. Objet</h2>
+        <p>Les présentes Conditions Générales de Vente (CGV) régissent les ventes conclues entre Magali Azama / Mag'ical Epoxy (ci-après "la Vendeuse") et tout client passant commande via le site magical-epoxy.fr (ci-après "le Client").</p>
+        <p><strong>Adresse :</strong> 1 allée des Bouvreuils — 87570 Rilhac-Rancon</p>
+        <p><strong>Email :</strong> mag-epoxy@gmx.fr</p>
+        <p>Toute commande implique l'acceptation pleine et entière des présentes CGV.</p>
+
+        <h2>2. Statut & TVA</h2>
+        <p>Mag'ical Epoxy exerce sous le statut d'Auto-Entrepreneur.</p>
+        <p>Conformément à l'article 293 B du Code Général des Impôts, la TVA est non applicable.</p>
+        <p>Les prix sont indiqués en euros, nets de toute taxe.</p>
+
+        <h2>3. Produits artisanaux & pièces uniques</h2>
+        <p>Chaque création Mag'ical Epoxy est réalisée entièrement à la main en résine époxy.</p>
+        <p>En raison de la nature artisanale du processus de fabrication, de légères variations peuvent exister d'une pièce à l'autre (nuances de couleur, disposition des paillettes, micro-bulles). Ces variations font partie intégrante du caractère unique de chaque création et ne peuvent être considérées comme des défauts.</p>
+        <p>Chaque pièce étant un exemplaire unique, aucune reproduction identique n'est possible.</p>
+
+        <h2>4. Représentation des photos</h2>
+        <p>Les photographies présentées sur le site sont aussi fidèles que possible à la réalité des créations. Toutefois, les couleurs peuvent légèrement varier selon les paramètres d'affichage de votre écran (luminosité, calibration, etc.).</p>
+
+        <h2>5. Prix</h2>
+        <p>Les prix affichés sur le site sont indiqués en euros, nets de toute taxe. Mag'ical Epoxy se réserve le droit de modifier ses tarifs à tout moment. Les produits sont facturés sur la base des prix en vigueur au moment de la validation de la commande.</p>
+        <p>Les frais de port sont de 5,90 € fixes, et offerts dès 40 € d'achat.</p>
+
+        <h2>6. Commandes et paiement</h2>
+        <p>Le paiement est exigible immédiatement à la commande, par Carte Bancaire ou PayPal, via l'interface sécurisée du site.</p>
+        <p>La commande est définitivement validée après confirmation du paiement.</p>
+        <p>Toute commande fait l'objet d'une facture.</p>
+
+        <h2>7. Disponibilité des produits</h2>
+        <p>Les créations proposées sont des pièces uniques, disponibles dans la limite des stocks existants.</p>
+        <p>En cas d'indisponibilité d'un produit après validation de la commande, la Vendeuse s'engage à en informer le Client dans les plus brefs délais et lui proposera, selon sa préférence :</p>
+        <ul>
+            <li>un remboursement intégral, ou</li>
+            <li>une création similaire selon disponibilité.</li>
+        </ul>
+
+        <h2>8. Commandes sur mesure — Délais de fabrication</h2>
+        <p>Les créations personnalisées sont fabriquées artisanalement après validation de la commande.</p>
+        <p>Compte tenu des temps de séchage et de polymérisation propres à la résine époxy, le délai de fabrication est d'environ un mois. Ce délai est communiqué et confirmé au Client avant tout engagement de sa part.</p>
+
+        <h2>9. Rendu des créations personnalisées</h2>
+        <p>Mag'ical Epoxy s'engage à respecter au mieux les couleurs et souhaits exprimés par le Client. Toutefois, la résine époxy est un matériau vivant dont le rendu final peut varier selon les conditions de séchage, les interactions entre pigments et les effets naturels de la matière.</p>
+        <p>Ces variations font partie du caractère artisanal de chaque pièce et ne peuvent être considérées comme un défaut.</p>
+
+        <h2>10. Livraison</h2>
+        <p>Les commandes sont expédiées sous 3 à 5 jours ouvrés pour les produits en stock (hors commandes sur mesure).</p>
+        <p>L'expédition est assurée via Mondial Relay.</p>
+        <p>Mag'ical Epoxy ne peut être tenue responsable des retards ou dommages causés par le transporteur une fois le colis remis à ce dernier.</p>
+
+        <h2>11. Colis endommagé</h2>
+        <p>En cas de réception d'un colis endommagé, le Client est invité à :</p>
+        <ul>
+            <li>Conserver l'emballage d'origine</li>
+            <li>Photographier immédiatement le colis et le produit concerné</li>
+            <li>Contacter Mag'ical Epoxy par email à mag-epoxy@gmx.fr dans un délai de 3 jours ouvrés suivant la réception, en joignant les photos.</li>
+        </ul>
+        <p>Après vérification, Mag'ical Epoxy accompagnera le Client dans sa réclamation auprès du transporteur et proposera, selon sa préférence, un remplacement ou un remboursement intégral.</p>
+        <p>Aucune réclamation ne pourra être acceptée au-delà de ce délai.</p>
+
+        <h2>12. Droit de rétractation</h2>
+        <p>Conformément à la législation en vigueur, le Client dispose d'un délai de 14 jours à compter de la réception de sa commande pour exercer son droit de rétractation, sans avoir à en justifier le motif.</p>
+        <p>⚠️ Exception : Les créations personnalisées et réalisées sur mesure à la demande du Client sont expressément exclues du droit de rétractation, conformément à l'article L221-28 du Code de la consommation.</p>
+
+        <h2>13. Entretien des créations</h2>
+        <p>Des conseils d'entretien détaillés sont disponibles sur la page Entretien du site.</p>
+        <p>Le non-respect de ces recommandations (exposition prolongée au soleil, chaleur excessive, produits chimiques agressifs) dégage la responsabilité de Mag'ical Epoxy en cas de détérioration du produit.</p>
+
+        <h2>14. Données personnelles — RGPD</h2>
+        <p>Les informations collectées lors de la commande (nom, adresse, email) sont utilisées exclusivement dans le cadre du traitement et de l'acheminement de la commande. Elles ne sont jamais transmises à des tiers à des fins commerciales.</p>
+        <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en contactant : mag-epoxy@gmx.fr</p>
+
+        <h2>15. Litiges et médiation</h2>
+        <p>Les présentes CGV sont soumises au droit français.</p>
+        <p>En cas de litige, une solution amiable sera privilégiée. Le Client peut prendre contact à l'adresse : mag-epoxy@gmx.fr</p>
+        <p>À défaut de résolution amiable, le Client peut recourir gratuitement à un médiateur de la consommation :</p>
+        <p><strong>CM2C — Centre de Médiation de la Consommation de Conciliateurs de Justice</strong></p>
+        <p>Site : cm2c.net</p>
+
+        
+    </main>
+
+    <footer style="padding: 60px 40px 30px; margin-top: 50px; border-top: 2px solid rgba(255,105,180,0.3); position: relative; z-index: 10; background: linear-gradient(180deg, rgba(255,105,180,0.05) 0%, transparent 100%);">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left;">
+            
+            <!-- Logo et description -->
+            <div>
+                <h3 style="color: #ff9ec6; font-size: 1.4rem; margin-bottom: 15px;">✨ Mag'ical Epoxy</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; text-align: justify;">
+                    Créations artisanales uniques en résine époxy, faites main.
+                    Chaque pièce est unique et raconte une histoire.
+                </p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 15px; text-align: justify;">
+                    🎁 Le cadeau original qu'on ne trouve nul par ailleurs
+                </p>
+            </div>
+            
+            <!-- Navigation rapide -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Navigation</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 8px;"><a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">🏠 Boutique</a></li>
+                    <li style="margin-bottom: 8px;"><a href="envers-du-decor.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📖 L'envers du décor</a></li>
+                    <li style="margin-bottom: 8px;"><a href="entretien.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">🧼 Entretien</a></li>
+                    <li style="margin-bottom: 8px;"><a href="contact.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📧 Contact</a></li>
+                    <li style="margin-bottom: 8px;"><a href="cgv.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📋 CGV</a></li>
+                    <li style="margin-bottom: 8px;"><a href="mentions-legales.html" style="color: #ff9ec6; text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">⚖️ Mentions Légales</a></li>
+                </ul>
+            </div>
+            
+            <!-- Informations -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Informations</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">📍 Haute-Vienne (15 min de Limoges)</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">🚚 Livraison France</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">📦 Frais de port : 5,90€</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">✨ Offerts dès 40€ d'achat</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">🔒 Paiement sécurisé</li>
+                </ul>
+            </div>
+            
+            <!-- Contact -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Contact</h4>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                    Une question ? Un projet personnalisé ?<br>
+                    N'hésite pas à me contacter !
+                </p>
+                <a href="contact.html" style="display: inline-block; color: #ff9ec6; text-decoration: none; border: 2px solid #ff9ec6; padding: 10px 20px; border-radius: 25px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s;">
+                    📧 Me contacter
+                </a>
+            </div>
+            
+        </div>
+        
+        <!-- Copyright -->
+        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,105,180,0.2);">
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">
+                © 2026 <strong style="color: #ff9ec6;">Mag'ical Epoxy</strong> - Tous droits réservés<br>
+                <span style="font-size: 0.75rem;">Artisanat d'art en résine époxy • Haute-Vienne, France</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Étoiles magiques avec mouvement
+        const container = document.getElementById('star-container');
+        const starColors = ['#ffffff', '#ff9ec6', '#ffb8e0', '#ffc4d6'];
+        const starSizes = ['star-small', 'star-medium', 'star-large', 'star-xl'];
+        const driftAnimations = ['drift-slow', 'drift-medium', 'drift-fast'];
+        
+        // 150 étoiles avec différentes tailles et mouvements
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            
+            const sizeRandom = Math.random();
+            let sizeClass;
+            if (sizeRandom < 0.5) sizeClass = 'star-small';
+            else if (sizeRandom < 0.75) sizeClass = 'star-medium';
+            else if (sizeRandom < 0.9) sizeClass = 'star-large';
+            else sizeClass = 'star-xl';
+            
+            star.className = `star ${sizeClass}`;
+            star.style.backgroundColor = starColors[Math.floor(Math.random() * starColors.length)];
+            star.style.color = star.style.backgroundColor;
+            star.style.left = Math.random() * 120 - 10 + '%';
+            star.style.top = Math.random() * 120 - 10 + '%';
+            
+            const twinkleDuration = Math.random() * 4 + 2;
+            const twinkleDelay = Math.random() * 5;
+            const driftDuration = Math.random() * 20 + 15;
+            const driftDelay = Math.random() * 10;
+            const driftDirection = Math.random() > 0.5 ? '' : 'reverse';
+            const driftAnimation = driftAnimations[Math.floor(Math.random() * driftAnimations.length)];
+            
+            star.style.animation = `twinkle ${twinkleDuration}s ${twinkleDelay}s infinite ease-in-out, ${driftAnimation} ${driftDuration}s ${driftDelay}s linear infinite ${driftDirection}`;
+            
+            container.appendChild(star);
+        }
+    </script>
+</body>
+</html>

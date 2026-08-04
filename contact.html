@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact | Mag'ical Epoxy - Haute-Vienne — Artisanat résine à Limoges</title>
+    <meta name="description" content="Écrivez à Mag'ical Epoxy pour une question, une commande personnalisée ou un projet en résine époxy. Atelier à Limoges, Haute-Vienne.">
+
+    <link rel="icon" type="image/png" href="images/logomagepoxy.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://app.snipcart.com">
+    <link rel="preconnect" href="https://cdn.snipcart.com">
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.css" />
+
+    <style>
+        body { 
+            background: linear-gradient(135deg, #000000 0%, #1a0033 20%, #2d1b69 40%, #4a148c 60%, #311b92 80%, #000000 100%);
+            background-attachment: fixed;
+            color: white; 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            overflow-x: hidden; 
+        }
+
+        .main-nav ul { display: flex; justify-content: center; list-style: none; padding: 20px; background: rgba(0,0,0,0.9); margin: 0; position: sticky; top: var(--shipping-banner-height, 44px); z-index: 100; gap: 20px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,105,180,0.2); }
+        .main-nav a { text-decoration: none; color: white !important; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+        .main-nav a:hover { color: #ff9ec6 !important; }
+
+        .header-magical { display: flex; align-items: center; justify-content: center; padding: 60px 20px; gap: 25px; flex-wrap: wrap; position: relative; z-index: 10; }
+        .logo-img { width: 120px; height: 120px; object-fit: cover; }
+        .header-text h1 { font-size: 3rem; margin: 0; letter-spacing: 2px; color: white; }
+        .header-text p { font-family: 'Quicksand', sans-serif; font-size: 1.4rem; color: rgba(255,255,255,0.8); margin: 0; font-weight: 500; }
+
+        #star-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+        .star { position: absolute; border-radius: 50%; opacity: 0.6; }
+        .star-small { width: 1px; height: 1px; }
+        .star-medium { width: 2px; height: 2px; box-shadow: 0 0 2px currentColor; }
+        .star-large { width: 3px; height: 3px; box-shadow: 0 0 4px currentColor; }
+        .star-xl { width: 4px; height: 4px; box-shadow: 0 0 6px 1px currentColor; }
+        
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
+        @keyframes drift-slow { from { transform: translateX(0) translateY(0); } to { transform: translateX(100px) translateY(-50px); } }
+        @keyframes drift-medium { from { transform: translateX(0) translateY(0); } to { transform: translateX(-80px) translateY(-80px); } }
+        @keyframes drift-fast { from { transform: translateX(0) translateY(0); } to { transform: translateX(150px) translateY(-30px); } }
+
+        @media (max-width: 768px) {
+            .header-text h1 { font-size: 2.2rem; }
+            
+            /* Formulaire contact responsive */
+            .contact-form {
+                padding: 20px !important;
+            }
+            
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 0.9rem !important;
+            }
+            
+            .contact-form button {
+                font-size: 0.9rem !important;
+                padding: 12px 20px !important;
+            }
+            
+            /* Footer mobile en 1 colonne */
+            footer > div[style*="grid"] {
+                grid-template-columns: 1fr !important;
+                gap: 25px !important;
+                text-align: center !important;
+                padding: 0 20px !important;
+            }
+            
+            footer h3, footer h4 {
+                font-size: 1.2rem !important;
+            }
+            
+            footer p, footer li {
+                font-size: 0.85rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-text h1 { font-size: 1.8rem; }
+            .main-nav ul { 
+                gap: 8px !important; 
+                padding: 12px 8px !important; 
+                font-size: 0.75rem !important;
+            }
+            
+            .contact-form {
+                padding: 15px !important;
+            }
+            
+            .contact-form input,
+            .contact-form textarea {
+                font-size: 0.85rem !important;
+                padding: 10px !important;
+            }
+            
+            .contact-form button {
+                font-size: 0.85rem !important;
+                padding: 10px 15px !important;
+            }
+            
+            .cta-section {
+                padding: 20px !important;
+            }
+            
+            .cta-section h3 {
+                font-size: 1.1rem !important;
+            }
+            
+            .cta-section p {
+                font-size: 0.9rem !important;
+            }
+        }
+
+        /* Force TOUTES les images à ne jamais dépasser de l'écran */
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+
+        /* Sur mobile (téléphones) */
+        @media (max-width: 768px) {
+            /* On force tous les éléments qui sont côte à côte à se mettre l'un sous l'autre */
+            .container-cgv div, 
+            .header-magical,
+            main section {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            /* On enlève les marges qui poussent l'image sur le côté */
+            .container-cgv img {
+                margin: 20px 0 !important;
+                float: none !important;
+                width: 100% !important; /* L'image prend toute la largeur du cadre rose */
+            }
+            
+            /* On ajuste le texte pour qu'il ne soit plus compressé */
+            p, li {
+                font-size: 1rem !important;
+                text-align: left !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="star-container"></div>
+    <div class="shipping-banner">
+        <div class="shipping-banner__inner">
+            <span>Frais de port fixes : 5,90€</span> | <span>Offerts dès 40€ d'achat ✨</span>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">🏠 Accueil</a></li>
+            <li><a href="envers-du-decor.html">📖 L'envers du décor</a></li>
+            <li><a href="entretien.html">🧼 Entretien</a></li>
+            <li><a href="contact.html">📧 Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="header-magical">
+        <img src="images/logomagepoxy.png" alt="Logo Mag'ical Epoxy" class="logo-img">
+        <div class="header-text">
+            <h1 style="color: #ff9ec6; font-family: 'Quicksand', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Contact</h1>
+            <p>Une question, un projet sur mesure ? ✨</p>
+        </div>
+    </header>
+
+    <!-- Accroche intro -->
+    <section style="max-width: 800px; margin: 0 auto 40px auto; padding: 0 20px; text-align: center; position: relative; z-index: 10;">
+        <p style="font-size: 1.2rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">
+            Un projet qui vous tient à cœur ? Vous êtes au bon endroit. ✨ Je lis chaque message avec attention et je vous réponds généralement sous 24 à 48h (hors week-end).
+        </p>
+    </section>
+
+    <main>
+        <section style="max-width: 500px; margin: 0 auto 80px auto; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border-left: 5px solid #ff9ec6; border-bottom: 5px solid #ff9ec6; position: relative; z-index: 10; box-shadow: 0 0 30px rgba(255,105,180,0.1);">
+            <h2 style="text-align: center; color: #ff9ec6; font-family: 'Quicksand', sans-serif; font-size: 1.8rem; margin-top: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Me contacter</h2>
+            
+            <form action="https://formsubmit.co/mag-epoxy@gmx.fr" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" name="nom" placeholder="Votre nom" required style="padding: 15px; border-radius: 10px; border: none; font-family: 'Quicksand';">
+                <input type="email" name="email" placeholder="Votre email" required style="padding: 15px; border-radius: 10px; border: none; font-family: 'Quicksand';">
+                <textarea name="message" rows="5" placeholder="Parlez-moi de votre projet..." required style="padding: 15px; border-radius: 10px; border: none; font-family: 'Quicksand'; resize: none;"></textarea>
+                
+                <!-- Options FormSubmit -->
+                <input type="hidden" name="_subject" value="Nouveau message depuis Mag'ical Epoxy !">
+                <input type="hidden" name="_template" value="table">
+
+                <button type="submit" style="background: #ff69b4; color: black; padding: 15px; border-radius: 30px; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; font-family: 'Quicksand'; font-size: 1.1rem;">Envoyer le message ✨</button>
+            </form>
+        </section>
+
+        <!-- Encart commande sur mesure -->
+        <section style="max-width: 800px; margin: 0 auto 60px auto; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 20px; border-left: 5px solid #ff9ec6; border-bottom: 5px solid #ff9ec6; position: relative; z-index: 10; box-shadow: 0 0 25px rgba(255,202,229,0.1);">
+            <h3 style="color: #ff9ec6; font-family: 'Quicksand', sans-serif; font-size: 1.5rem; margin-top: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; text-align: center; margin-bottom: 20px;">
+                🎨 Commande(s) sur mesure
+            </h3>
+            <p style="font-size: 1.1rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">
+                Vous avez un projet sur mesure ? N'hésitez pas à me décrire votre idée dans le message : couleurs souhaitées, dimensions approximatives, occasion (anniversaire, mariage, cadeau…), et si vous avez un budget en tête. Plus vous me donnez de détails, plus je pourrai vous proposer quelque chose qui vous ressemble vraiment. 💛
+            </p>
+        </section>
+
+        <!-- Ligne de réassurance -->
+        <section style="max-width: 500px; margin: 0 auto 40px auto; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 20px; border-left: 5px solid #ff9ec6; border-bottom: 5px solid #ff9ec6; text-align: center; position: relative; z-index: 10;">
+            <p style="font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">
+                🔒 Vos informations restent confidentielles et ne sont jamais partagées.
+            </p>
+        </section>
+
+        <!-- Contact alternatif -->
+        <section style="max-width: 800px; margin: 0 auto 60px auto; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 20px; border-left: 5px solid #ff9ec6; border-bottom: 5px solid #ff9ec6; position: relative; z-index: 10;">
+            <p style="font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.8); margin: 0; text-align: center;">
+                📧 Si le formulaire ne fonctionne pas, vous pouvez aussi m'écrire directement à :<br>
+                <a href="mailto:mag-epoxy@gmx.fr" style="color: #ff9ec6; text-decoration: none; font-weight: 600; transition: color 0.3s;">mag-epoxy@gmx.fr</a>
+            </p>
+        </section>
+
+    </main>
+
+    <footer style="padding: 60px 40px 30px; margin-top: 50px; border-top: 2px solid rgba(255,105,180,0.3); position: relative; z-index: 10; background: linear-gradient(180deg, rgba(255,105,180,0.05) 0%, transparent 100%);">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left;">
+            
+            <!-- Logo et description -->
+            <div>
+                <h3 style="color: #ff9ec6; font-size: 1.4rem; margin-bottom: 15px;">✨ Mag'ical Epoxy</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; text-align: justify;">
+                    Créations artisanales uniques en résine époxy, faites main.
+                    Chaque pièce est unique et raconte une histoire.
+                </p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 15px; text-align: justify;">
+                    🎁 Le cadeau original qu'on ne trouve nul par ailleurs
+                </p>
+            </div>
+            
+            <!-- Navigation rapide -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Navigation</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 8px;"><a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">🏠 Boutique</a></li>
+                    <li style="margin-bottom: 8px;"><a href="envers-du-decor.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📖 L'envers du décor</a></li>
+                    <li style="margin-bottom: 8px;"><a href="entretien.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">🧼 Entretien</a></li>
+                    <li style="margin-bottom: 8px;"><a href="contact.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📧 Contact</a></li>
+                    <li style="margin-bottom: 8px;"><a href="cgv.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📋 CGV</a></li>
+                    <li style="margin-bottom: 8px;"><a href="mentions-legales.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">⚖️ Mentions Légales</a></li>
+                </ul>
+            </div>
+            
+            <!-- Informations -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Informations</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">📍 Haute-Vienne (15 min de Limoges)</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">🚚 Livraison France</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">📦 Frais de port : 5,90€</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">✨ Offerts dès 40€ d'achat</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">🔒 Paiement sécurisé</li>
+                </ul>
+            </div>
+            
+            <!-- Contact -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Contact</h4>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                    Une question ? Un projet personnalisé ?<br>
+                    N'hésite pas à me contacter !
+                </p>
+                <a href="contact.html" style="display: inline-block; color: #ff9ec6; text-decoration: none; border: 2px solid #ff9ec6; padding: 10px 20px; border-radius: 25px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s;">
+                    📧 Me contacter
+                </a>
+            </div>
+            
+        </div>
+        
+        <!-- Copyright -->
+        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,105,180,0.2);">
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">
+                © 2026 <strong style="color: #ff9ec6;">Mag'ical Epoxy</strong> - Tous droits réservés<br>
+                <span style="font-size: 0.75rem;">Artisanat d'art en résine époxy • Haute-Vienne, France</span>
+            </p>
+        </div>
+    </footer>
+
+    <div id="snipcart" data-api-key="Yzg3ZDVhN2EtYjNiNS00NmM4LWI4MGMtMWY1MmYwM2Y1YjdmNjM5MTAxNTc1MjMyMzk0MjAw" data-config-modal-style="side" hidden></div>
+    <script async src="https://cdn.snipcart.com/themes/v3.4.1/default/snipcart.js"></script>
+
+    <script>
+        // Étoiles magiques avec mouvement
+        const container = document.getElementById('star-container');
+        const starColors = ['#ffffff', '#ff9ec6', '#ffb8e0', '#ffc4d6'];
+        const starSizes = ['star-small', 'star-medium', 'star-large', 'star-xl'];
+        const driftAnimations = ['drift-slow', 'drift-medium', 'drift-fast'];
+        
+        // 150 étoiles avec différentes tailles et mouvements
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            
+            const sizeRandom = Math.random();
+            let sizeClass;
+            if (sizeRandom < 0.5) sizeClass = 'star-small';
+            else if (sizeRandom < 0.75) sizeClass = 'star-medium';
+            else if (sizeRandom < 0.9) sizeClass = 'star-large';
+            else sizeClass = 'star-xl';
+            
+            star.className = `star ${sizeClass}`;
+            star.style.backgroundColor = starColors[Math.floor(Math.random() * starColors.length)];
+            star.style.color = star.style.backgroundColor;
+            star.style.left = Math.random() * 120 - 10 + '%';
+            star.style.top = Math.random() * 120 - 10 + '%';
+            
+            const twinkleDuration = Math.random() * 4 + 2;
+            const twinkleDelay = Math.random() * 5;
+            const driftDuration = Math.random() * 20 + 15;
+            const driftDelay = Math.random() * 10;
+            const driftDirection = Math.random() > 0.5 ? '' : 'reverse';
+            const driftAnimation = driftAnimations[Math.floor(Math.random() * driftAnimations.length)];
+            
+            star.style.animation = `twinkle ${twinkleDuration}s ${twinkleDelay}s infinite ease-in-out, ${driftAnimation} ${driftDuration}s ${driftDelay}s linear infinite ${driftDirection}`;
+            
+            container.appendChild(star);
+        }
+    </script>
+</body>
+</html>

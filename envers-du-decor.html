@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>L'envers du décor | Mag'ical Epoxy : Fabrication Artisanale en Haute-Vienne</title>
+    <meta name="description" content="Entrez dans l'atelier de Mag'ical Epoxy. Découvrez comment vos statuettes et figurines en résine sont créées avec passion en Haute-Vienne.">
+    <meta name="keywords" content="atelier résine limoges, création haute-vienne, processus création époxy, fait main limoges, créatrice résine 87">
+
+    <meta property="og:title" content="L'envers du décor ✨ Mag'ical Epoxy">
+    <meta property="og:description" content="Découvrez les coulisses de la création en résine au cœur du Limousin.">
+    <meta property="og:image" content="images/logomagepoxy.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- STYLE GLOBAL --- */
+        body { 
+            background: linear-gradient(135deg, #000000 0%, #1a0033 20%, #2d1b69 40%, #4a148c 60%, #311b92 80%, #000000 100%);
+            background-attachment: fixed;
+            color: white; 
+            margin: 0; 
+            font-family: 'Quicksand', sans-serif; 
+            overflow-x: hidden; 
+        }
+
+        /* --- NAVIGATION --- */
+        .main-nav ul { display: flex; justify-content: center; list-style: none; padding: 20px; background: rgba(0,0,0,0.9); margin: 0; position: sticky; top: var(--shipping-banner-height, 44px); z-index: 100; gap: 20px; flex-wrap: wrap; border-bottom: 1px solid rgba(255,105,180,0.2); }
+        .main-nav a { text-decoration: none; color: white !important; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+        .main-nav a:hover { color: #ff9ec6 !important; }
+
+        /* --- HEADER --- */
+        .header-magical { display: flex; align-items: center; justify-content: center; padding: 60px 20px; gap: 25px; flex-wrap: wrap; position: relative; z-index: 10; }
+        .logo-img { width: 120px; height: 120px; object-fit: cover; }
+        .header-text h1 { font-size: 3rem; margin: 0; letter-spacing: 2px; color: white; }
+        .header-text p { font-family: 'Quicksand', sans-serif; font-size: 1.4rem; color: rgba(255,255,255,0.8); margin: 0; font-weight: 500; }
+
+        /* --- CONTENU --- */
+        .container-envers { width: 90%; max-width: 1200px; margin: 40px auto; position: relative; z-index: 10; }
+
+        .section-intro { text-align: center; max-width: 800px; margin: 0 auto 60px auto; line-height: 1.8; color: rgba(255,255,255,0.9); }
+
+        /* Pour alterner photo/texte */
+        .row-duo.reverse { flex-direction: row-reverse; }
+
+        .row-duo { display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; align-items: stretch; flex-wrap: wrap; }
+        
+        .image-box { flex: 1; min-width: 300px; text-align: center; }
+        .image-small { width: 100%; height: 350px; border-radius: 20px; border: 1px solid rgba(255, 105, 180, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); object-fit: cover; transition: 0.4s ease; }
+        .image-small:hover { transform: scale(1.03); border-color: #ff69b4; box-shadow: 0 0 30px rgba(255, 105, 180, 0.2); }
+
+        /* Timeline moderne */
+        .timeline-container { position: relative; max-width: 900px; margin: 30px auto; }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff69b4 0%, #ff9ec6 50%, #ff69b4 100%);
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+        
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 105, 180, 0.2);
+            max-width: 380px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: #ff69b4;
+            box-shadow: 0 20px 40px rgba(255, 105, 180, 0.15);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 15px solid rgba(255, 105, 180, 0.2);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 30px;
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 15px solid rgba(255, 105, 180, 0.2);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #ff69b4, #ff9ec6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.4);
+            z-index: 10;
+            top: 15px;
+        }
+        
+        .timeline-image {
+            width: 100%;
+            max-width: 320px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: all 0.4s ease;
+        }
+        
+        .timeline-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.2);
+        }
+        
+        .timeline-text h3 {
+            color: #ff9ec6;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.3rem;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .timeline-text p {
+            line-height: 1.6;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.85);
+            margin: 0;
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff69b4, #ff9ec6);
+            color: #000;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- ÉTOILES MAGIQUES --- */
+        #star-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden; }
+        .star { position: absolute; border-radius: 50%; opacity: 0.6; }
+        .star-small { width: 1px; height: 1px; }
+        .star-medium { width: 2px; height: 2px; box-shadow: 0 0 2px currentColor; }
+        .star-large { width: 3px; height: 3px; box-shadow: 0 0 4px currentColor; }
+        .star-xl { width: 4px; height: 4px; box-shadow: 0 0 6px 1px currentColor; }
+        
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 1; transform: scale(1.3); } }
+        @keyframes drift-slow { from { transform: translateX(0) translateY(0); } to { transform: translateX(100px) translateY(-50px); } }
+        @keyframes drift-medium { from { transform: translateX(0) translateY(0); } to { transform: translateX(-80px) translateY(-80px); } }
+        @keyframes drift-fast { from { transform: translateX(0) translateY(0); } to { transform: translateX(150px) translateY(-30px); } }
+
+        @media (max-width: 768px) {
+            .header-text h1 { font-size: 2.2rem; }
+            .row-duo { flex-direction: column; }
+            .image-small { height: 250px; }
+            .box-duo { border-left: none; border-top: 6px solid #ff69b4; }
+            
+            /* Sections responsive */
+            .timeline-section {
+                padding: 25px !important;
+            }
+            
+            .timeline-section h2 {
+                font-size: 1.5rem !important;
+                margin-bottom: 30px !important;
+            }
+            
+            .timeline-section h3 {
+                font-size: 1.1rem !important;
+                margin-bottom: 12px !important;
+            }
+            
+            .timeline-section p {
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            /* Footer mobile en 1 colonne */
+            footer > div[style*="grid"] {
+                grid-template-columns: 1fr !important;
+                gap: 25px !important;
+                text-align: center !important;
+                padding: 0 20px !important;
+            }
+            
+            footer h3, footer h4 {
+                font-size: 1.2rem !important;
+            }
+            
+            footer p, footer li {
+                font-size: 0.85rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-text h1 { font-size: 1.8rem; }
+            .main-nav ul { 
+                gap: 8px !important; 
+                padding: 12px 8px !important; 
+                font-size: 0.75rem !important;
+            }
+            
+            .timeline-section {
+                padding: 20px !important;
+                margin-top: 40px !important;
+            }
+            
+            .timeline-section h2 {
+                font-size: 1.3rem !important;
+                letter-spacing: 1px !important;
+            }
+            
+            .timeline-section h3 {
+                font-size: 1rem !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .timeline-section p {
+                font-size: 0.85rem !important;
+                line-height: 1.5 !important;
+            }
+        }
+
+        /* Force TOUTES les images à ne jamais dépasser de l'écran */
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+
+        /* Sur mobile (téléphones) */
+        @media (max-width: 768px) {
+            /* On force tous les éléments qui sont côte à côte à se mettre l'un sous l'autre */
+            .container-cgv div, 
+            .header-magical,
+            main section {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+
+            /* On enlève les marges qui poussent l'image sur le côté */
+            .container-cgv img {
+                margin: 20px 0 !important;
+                float: none !important;
+                width: 100% !important; /* L'image prend toute la largeur du cadre rose */
+            }
+            
+            /* On ajuste le texte pour qu'il ne soit plus compressé */
+            p, li {
+                font-size: 1rem !important;
+                text-align: left !important;
+            }
+            
+            /* Correction spécifique pour la page envers-du-decor */
+            .timeline-section div[style*="display: flex"] {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+            
+            .timeline-section div[style*="align-items: flex-start"] {
+                align-items: center !important;
+            }
+            
+            .timeline-section div:first-child {
+                order: 1;
+            }
+            
+            .timeline-section div:last-child {
+                order: 2;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="star-container"></div>
+    <div class="shipping-banner">
+        <div class="shipping-banner__inner">
+            <span>Frais de port fixes : 5,90€</span> | <span>Offerts dès 40€ d'achat ✨</span>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">🏠 Accueil</a></li>
+            <li><a href="envers-du-decor.html">📖 L'envers du décor</a></li>
+            <li><a href="entretien.html">🧼 Entretien</a></li>
+            <li><a href="contact.html">📧 Contact</a></li>
+        </ul>
+    </nav>
+
+    <header class="header-magical">
+        <img src="images/logomagepoxy.png" alt="Logo Mag'ical Epoxy" class="logo-img">
+        <div class="header-text">
+            <h1 style="color: #ff9ec6; font-family: 'Quicksand', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">L'envers du <span>Décor</span></h1>
+        </div>
+    </header>
+
+    <main class="container-envers">
+        
+        <section class="timeline-section" style="margin-top: 5px; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border-left: 5px solid #ff9ec6; border-bottom: 5px solid #ff9ec6;">
+            <div style="display: flex; align-items: flex-start; gap: 20px; padding: 40px;">
+                <div style="flex: 1;">
+                    <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem; margin: 0;">
+                        « Bienvenue dans mon univers ! Je suis Magali, la créatrice de <strong>Mag'ical Epoxy</strong>.<br><br>
+                        Tout a commencé avec vidéo de coulée, puis une autre, puis des vidéos de démoulage… un kit de démarrage et la passion est arrivée. »
+                    </p>
+                    <p style="text-align: right; color: #ff9ec6; font-family: 'Quicksand', sans-serif; font-size: 1.2rem; margin-top: 15px; font-weight: 600;">— Magali 💕</p>
+                </div>
+                <div style="flex-shrink: 0;">
+                    <img src="images/ENVERS/creatrice.png" alt="Magali créatrice artisanale de Mag'ical Epoxy - L'alchimiste et l'âme des sentiments - Haute-Vienne" style="width: 180px; height: 180px; border-radius: 10px; border: 3px solid #ff9ec6; object-fit: cover; box-shadow: 0 0 15px rgba(255,158,198,0.3); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease;" onclick="if(this.style.transform=='scale(1.6)'){this.style.transform='scale(1)'}else{this.style.transform='scale(1.6)'}">
+                </div>
+            </div>
+        </section>
+
+        <!-- Section processus de création -->
+        <div class="timeline-section" style="margin-top: 80px; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border-left: 5px solid #ff9ec6; border-bottom: 5px solid #ff9ec6;">
+            <h2 style="color: #ff9ec6; font-family: 'Quicksand', sans-serif; font-size: 1.8rem; margin-top: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 40px;">
+                🎨 Processus de création
+            </h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #ff9ec6; font-size: 1.3rem; margin-bottom: 15px;">👩‍🎨 L'Atelier</h3>
+                    <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem;">
+                        Je travaille seule sur chaque pièce; du temps, de l'attention, et l'envie que chaque pièce soit vraiment unique.
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #ff9ec6; font-size: 1.3rem; margin-bottom: 15px;">🧪 La Coulée</h3>
+                    <div style="display: flex; align-items: flex-start; gap: 20px;">
+                        <div style="flex: 1;">
+                            <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem;">
+                                La résine époxy, c'est de la chimie autant que de l'art. Chaque coulée est une petite expérience. J'incorpore des colorants, des paillettes, ou autres éléments pour que chaque pièce ait son caractère propre.
+                            </p>
+                        </div>
+                        <div style="flex-shrink: 0;">
+                            <img src="images/ENVERS/Atelier.png" alt="Atelier de création artisanale en résine époxy - Fabrication de pièces uniques en Haute-Vienne" style="width: 180px; height: 180px; border-radius: 10px; border: 3px solid #ff9ec6; object-fit: cover; object-position: center; box-shadow: 0 0 15px rgba(255,158,198,0.3); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease;" onclick="if(this.style.transform=='scale(1.6)'){this.style.transform='scale(1)'}else{this.style.transform='scale(1.6)'}">
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #ff9ec6; font-size: 1.3rem; margin-bottom: 15px;">✨ Le Démoulage</h3>
+                    <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem;">
+                        Démouler une pièce, c'est toujours un moment un peu fébrile. On ne sait jamais exactement ce qu'on va trouver — les couleurs se sont mélangées, la lumière a joué.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 style="color: #ff9ec6; font-size: 1.3rem; margin-bottom: 15px;">🔧 La Finition</h3>
+                    <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem;">
+                        Vient ensuite la finition : ponçage délicat si nécessaire, vérification de chaque détail, et un dernier regard avant d'emballer. Chaque pièce qui quitte l'atelier a été tenue entre mes mains à chaque étape. C'est ça, le fait main. 💕
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section coulisses -->
+        <div class="timeline-section" style="margin-top: 80px; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border-left: 5px solid #ff9ec6; border-bottom: 5px solid #ff9ec6;">
+            <h2 style="color: #ff9ec6; font-family: 'Quicksand', sans-serif; font-size: 1.8rem; margin-top: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-align: center; margin-bottom: 40px;">
+                🔥 Les petites anecdotes
+            </h2>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #ff9ec6; font-size: 1.3rem; margin-bottom: 15px;">😅 L'été du quasi-incendie</h3>
+                    <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem;">
+                        28 degrés dans l'atelier, une épaisseur de résine un peu trop généreuse… et une réaction chimique qui s'emballe. La résine peut chauffer très fort en polymérisant — trop d'épaisseur d'un coup, et ça devient un vrai risque. Leçon apprise : on coule en couches fines, et on surveille. 🔥
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #ff9ec6; font-size: 1.3rem; margin-bottom: 15px;">🌡️ La résine qui reste molle</h3>
+                    <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem;">
+                        Cela arrive. Un mauvais dosage, une température trop basse, et la pièce ne prend jamais vraiment. Elle reste poisseuse, inutilisable telle quelle. Mais pas question de jeter — je la réintègre dans d'autres coulées, comme un ingrédient secret. Zéro gâchis. ♻️
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #ff9ec6; font-size: 1.3rem; margin-bottom: 15px;">🌀 Les zones rebelles</h3>
+                    <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem;">
+                        Parfois une pièce sèche parfaitement… sauf un petit coin qui reste mou des jours, des semaines durant. On attend. On surveille. On râle un peu. Et parfois on recommence. C'est la résine qui décide, pas moi. 😅
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 style="color: #ff9ec6; font-size: 1.3rem; margin-bottom: 15px;">✨ La magie du processus</h3>
+                    <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem;">
+                        Tout ça pour dire : derrière chaque création qui arrive chez vous, il y a des essais, des ratés, et beaucoup d'obstination. C'est peut-être ça aussi, la magie. ✨
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section l'envie de se lancer -->
+        <div class="timeline-section" style="margin-top: 80px; padding: 40px; background: rgba(255,255,255,0.05); border-radius: 20px; border-left: 5px solid #ff9ec6; border-bottom: 5px solid #ff9ec6;">
+                
+                <div style="max-width: 800px; margin: 0 auto;">
+                <div style="margin-bottom: 30px;">
+                    <h3 style="color: #ff9ec6; font-size: 1.3rem; margin-bottom: 15px;">😷 Quelques petites choses apprises en chemin</h3>
+                    <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem;">
+                        <strong>Un vrai masque anti-vapeurs chimiques</strong> ;<br><br>
+                        <strong>Des gants à chaque coulée</strong> ;<br><br>
+                        <strong>Une pièce aérée qui n'est pas une pièce de vie</strong> ;<br><br>
+                        <strong>Pendant la coulée et la polymérisation, enfants et animaux à l'écart</strong> ; avoir du sable ou de la terre si la résine prend feu ; et extincteur à proximité si la situation vous échappe.
+                    </p>
+                </div>
+                
+                <div>
+                    <p style="text-align: justify; line-height: 1.7; color: rgba(255,255,255,0.9); font-size: 1rem;">
+                        Et si vous avez des questions — <strong>contactez-moi, je serai ravie de partager mon expérience.</strong> 💕
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        
+    </main>
+
+    <footer style="padding: 60px 40px 30px; margin-top: 50px; border-top: 2px solid rgba(255,105,180,0.3); position: relative; z-index: 10; background: linear-gradient(180deg, rgba(255,105,180,0.05) 0%, transparent 100%);">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left;">
+            
+            <!-- Logo et description -->
+            <div>
+                <h3 style="color: #ff9ec6; font-size: 1.4rem; margin-bottom: 15px;">✨ Mag'ical Epoxy</h3>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; text-align: justify;">
+                    Créations artisanales uniques en résine époxy, faites main.
+                    Chaque pièce est unique et raconte une histoire.
+                </p>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 15px; text-align: justify;">
+                    🎁 Le cadeau original qu'on ne trouve nul par ailleurs
+                </p>
+            </div>
+            
+            <!-- Navigation rapide -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Navigation</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 8px;"><a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">🏠 Boutique</a></li>
+                    <li style="margin-bottom: 8px;"><a href="envers-du-decor.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📖 L'envers du décor</a></li>
+                    <li style="margin-bottom: 8px;"><a href="entretien.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">🧼 Entretien</a></li>
+                    <li style="margin-bottom: 8px;"><a href="contact.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📧 Contact</a></li>
+                    <li style="margin-bottom: 8px;"><a href="cgv.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">📋 CGV</a></li>
+                    <li style="margin-bottom: 8px;"><a href="mentions-legales.html" style="color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.3s;">⚖️ Mentions Légales</a></li>
+                </ul>
+            </div>
+            
+            <!-- Informations -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Informations</h4>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">📍 Haute-Vienne (15 min de Limoges)</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">🚚 Livraison France</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">📦 Frais de port : 5,90€</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">✨ Offerts dès 40€ d'achat</li>
+                    <li style="margin-bottom: 8px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">🔒 Paiement sécurisé</li>
+                </ul>
+            </div>
+            
+                        
+            <!-- Contact -->
+            <div>
+                <h4 style="color: #ff9ec6; font-size: 1.1rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px;">Contact</h4>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                    Une question ? Un projet personnalisé ?<br>
+                    N'hésite pas à me contacter !
+                </p>
+                <a href="contact.html" style="display: inline-block; color: #ff9ec6; text-decoration: none; border: 2px solid #ff9ec6; padding: 10px 20px; border-radius: 25px; font-size: 0.9rem; font-weight: 600; transition: all 0.3s;">
+                    📧 Me contacter
+                </a>
+            </div>
+            
+        </div>
+        
+        <!-- Copyright -->
+        <div style="text-align: center; margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,105,180,0.2);">
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem;">
+                © 2026 <strong style="color: #ff9ec6;">Mag'ical Epoxy</strong> - Tous droits réservés<br>
+                <span style="font-size: 0.75rem;">Artisanat d'art en résine époxy • Haute-Vienne, France</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Étoiles magiques avec mouvement
+        const container = document.getElementById('star-container');
+        const starColors = ['#ffffff', '#ff9ec6', '#ffb8e0', '#ffc4d6'];
+        const starSizes = ['star-small', 'star-medium', 'star-large', 'star-xl'];
+        const driftAnimations = ['drift-slow', 'drift-medium', 'drift-fast'];
+        
+        // 150 étoiles avec différentes tailles et mouvements
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            
+            // Choix aléatoire de la taille (plus de petites étoiles)
+            const sizeRandom = Math.random();
+            let sizeClass;
+            if (sizeRandom < 0.5) sizeClass = 'star-small';
+            else if (sizeRandom < 0.75) sizeClass = 'star-medium';
+            else if (sizeRandom < 0.9) sizeClass = 'star-large';
+            else sizeClass = 'star-xl';
+            
+            star.className = `star ${sizeClass}`;
+            
+            // Couleur aléatoire
+            star.style.backgroundColor = starColors[Math.floor(Math.random() * starColors.length)];
+            star.style.color = star.style.backgroundColor;
+            
+            // Position aléatoire (dépassant l'écran pour le mouvement)
+            star.style.left = Math.random() * 120 - 10 + '%';
+            star.style.top = Math.random() * 120 - 10 + '%';
+            
+            // Animation combinée: clignotement + dérive
+            const twinkleDuration = Math.random() * 4 + 2;
+            const twinkleDelay = Math.random() * 5;
+            const driftDuration = Math.random() * 20 + 15;
+            const driftDelay = Math.random() * 10;
+            const driftDirection = Math.random() > 0.5 ? '' : 'reverse';
+            const driftAnimation = driftAnimations[Math.floor(Math.random() * driftAnimations.length)];
+            
+            star.style.animation = `twinkle ${twinkleDuration}s ${twinkleDelay}s infinite ease-in-out, ${driftAnimation} ${driftDuration}s ${driftDelay}s linear infinite ${driftDirection}`;
+            
+            container.appendChild(star);
+        }
+    </script>
+</body>
+</html>
