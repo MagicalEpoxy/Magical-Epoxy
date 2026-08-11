@@ -63,6 +63,11 @@ export async function onRequestPost(context) {
             metadata: {
                 product_ids: productIds,
             },
+            // Génère et envoie automatiquement une vraie facture PDF
+            // après chaque paiement (obligatoire pour une auto-entreprise).
+            invoice_creation: {
+                enabled: true,
+            },
             // Email toujours demandé automatiquement par Stripe Checkout.
             // On demande aussi systématiquement un numéro de téléphone,
             // que ce soit une remise en main propre ou un envoi postal.
