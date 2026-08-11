@@ -49,6 +49,10 @@ export async function onRequestPost(context) {
 
         const domainURL = new URL(context.request.url).origin;
 
+        // On garde la liste des IDs produits (data-id) pour que le webhook
+        // sache quels articles marquer comme vendus après paiement confirmé.
+        const productIds = items.map(item => item.id).join(',');
+
         // Création de la session Stripe avec code promo activé
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
@@ -57,6 +61,9 @@ export async function onRequestPost(context) {
             allow_promotion_codes: true, // Permet d'utiliser vos codes promos Stripe
             success_url: `${domainURL}/success.html?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${domainURL}/index.html`,
+            metadata: {
+                product_ids: productIds,
+            },
         });
 
         return new Response(JSON.stringify({ url: session.url }), {

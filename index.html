@@ -1307,6 +1307,7 @@ collection de fioles magiques<br>
 
         // Ajoute automatiquement le badge "Vendu" et désactive le bouton d'achat
         // dès qu'un produit a l'attribut data-sold="true" dans le HTML
+        // (marquage manuel définitif, fait par toi via GitHub)
         function markSoldProducts() {
             document.querySelectorAll('.product').forEach(product => {
                 if (product.getAttribute('data-sold') !== 'true') return;
@@ -1327,6 +1328,31 @@ collection de fioles magiques<br>
                     btn.disabled = true;
                 }
             });
+        }
+
+        // Interroge le serveur (Cloudflare KV, alimenté par le webhook Stripe)
+        // pour savoir quels produits viennent d'être payés, et applique le
+        // même badge automatiquement, sans attendre que tu modifies le HTML.
+        // Si l'appel échoue (offline, fonction pas encore configurée), le
+        // site continue de fonctionner normalement avec le marquage manuel.
+        async function checkRecentlySoldProducts() {
+            try {
+                const response = await fetch('/sold-products');
+                if (!response.ok) return;
+                const { soldIds } = await response.json();
+
+                soldIds.forEach(id => {
+                    const btn = document.querySelector(`.add-to-cart[data-id="${id}"]`);
+                    const product = btn ? btn.closest('.product') : null;
+                    if (product) {
+                        product.setAttribute('data-sold', 'true');
+                    }
+                });
+
+                markSoldProducts();
+            } catch (err) {
+                console.warn('Impossible de vérifier les ventes récentes :', err);
+            }
         }
 
         function sortProductsByPrice(order) {
@@ -1356,6 +1382,7 @@ collection de fioles magiques<br>
 
         document.addEventListener('DOMContentLoaded', () => {
             markSoldProducts();
+            checkRecentlySoldProducts();
         });
     </script>
 
