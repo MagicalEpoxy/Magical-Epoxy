@@ -180,6 +180,32 @@
         }
 
         img { max-width: 100% !important; height: auto !important; }
+
+        /* --- Produits vendus --- */
+        .product.sold .img-container { position: relative; }
+        .product.sold img { filter: grayscale(60%) brightness(0.6); }
+        .sold-badge {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-4deg);
+            background: #ff69b4;
+            color: black;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            z-index: 5;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .product.sold .add-to-cart {
+            background: rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.6) !important;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -232,6 +258,7 @@
         <a href="#des" class="filter-btn" onclick="filterByCategory('des', this)">Dés</a>
         <a href="#animal" class="filter-btn" onclick="filterByCategory('animal', this)">Animaux</a>
         <a href="#zen" class="filter-btn" onclick="filterByCategory('zen', this)">Statuettes</a>
+        <a href="#vendus" class="filter-btn" onclick="filterByCategory('vendus', this)">✨ Vendus</a>
 
         <select id="priceSort" onchange="sortProductsByPrice(this.value)" class="filter-btn" style="background: rgba(255,105,180,0.2); cursor: pointer;">
             <option value="default" style="background: #1a0033; color: white;">📂 Trier par prix</option>
@@ -845,16 +872,48 @@ ambiance légère<br>
 
             const products = document.querySelectorAll('.product');
             products.forEach(product => {
+                const isSold = product.getAttribute('data-sold') === 'true';
+
+                // Onglet "Vendus" : on montre uniquement les produits vendus
+                if (category === 'vendus') {
+                    product.classList.toggle('hidden', !isSold);
+                    return;
+                }
+
+                // Sur les autres onglets, les produits vendus restent cachés
+                if (isSold) {
+                    product.classList.add('hidden');
+                    return;
+                }
+
                 if (category === 'all') {
-                    if (product.getAttribute('data-sold') !== 'true') {
-                        product.classList.remove('hidden');
-                    }
+                    product.classList.remove('hidden');
                 } else {
-                    if (product.classList.contains(category) && product.getAttribute('data-sold') !== 'true') {
-                        product.classList.remove('hidden');
-                    } else {
-                        product.classList.add('hidden');
-                    }
+                    product.classList.toggle('hidden', !product.classList.contains(category));
+                }
+            });
+        }
+
+        // Ajoute automatiquement le badge "Vendu" et désactive le bouton d'achat
+        // dès qu'un produit a l'attribut data-sold="true" dans le HTML
+        function markSoldProducts() {
+            document.querySelectorAll('.product').forEach(product => {
+                if (product.getAttribute('data-sold') !== 'true') return;
+
+                product.classList.add('sold', 'hidden');
+
+                if (!product.querySelector('.sold-badge')) {
+                    const badge = document.createElement('div');
+                    badge.className = 'sold-badge';
+                    badge.textContent = '✨ Vendu';
+                    const imgContainer = product.querySelector('.img-container');
+                    if (imgContainer) imgContainer.appendChild(badge);
+                }
+
+                const btn = product.querySelector('.add-to-cart');
+                if (btn) {
+                    btn.textContent = 'Vendu 💫';
+                    btn.disabled = true;
                 }
             });
         }
@@ -885,12 +944,7 @@ ambiance légère<br>
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            const products = document.querySelectorAll('.product');
-            products.forEach(product => {
-                if (product.getAttribute('data-sold') === 'true') {
-                    product.classList.add('hidden');
-                }
-            });
+            markSoldProducts();
         });
     </script>
 
