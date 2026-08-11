@@ -53,8 +53,7 @@ export async function onRequestPost(context) {
         // sache quels articles marquer comme vendus après paiement confirmé.
         const productIds = items.map(item => item.id).join(',');
 
-        // Création de la session Stripe avec code promo activé
-        const session = await stripe.checkout.sessions.create({
+        const sessionParams = {
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
@@ -64,7 +63,37 @@ export async function onRequestPost(context) {
             metadata: {
                 product_ids: productIds,
             },
-        });
+            // Email toujours demandé automatiquement par Stripe Checkout.
+            // On demande aussi systématiquement un numéro de téléphone,
+            // que ce soit une remise en main propre ou un envoi postal.
+            phone_number_collection: {
+                enabled: true,
+            },
+        };
+
+        // Si ce n'est PAS une remise en main propre, on a en plus besoin
+        // d'une adresse postale ET du point relais Mondial Relay choisi
+        // par la cliente (Stripe ne propose pas de sélecteur de points
+        // relais nativement, donc un champ texte).
+        if (!isHandDelivery) {
+            sessionParams.shipping_address_collection = {
+                allowed_countries: ['FR'],
+            };
+            sessionParams.custom_fields = [
+                {
+                    key: 'point_relais',
+                    label: {
+                        type: 'custom',
+                        custom: 'Point Relais Mondial Relay (nom + ville) — trouvez le vôtre sur mondialrelay.fr',
+                    },
+                    type: 'text',
+                    optional: false,
+                },
+            ];
+        }
+
+        // Création de la session Stripe avec code promo activé
+        const session = await stripe.checkout.sessions.create(sessionParams);
 
         return new Response(JSON.stringify({ url: session.url }), {
             headers: { 'Content-Type': 'application/json' },
