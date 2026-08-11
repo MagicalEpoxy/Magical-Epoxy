@@ -214,6 +214,12 @@ class ShoppingCart {
                             Remise en main propre (Frais de port offerts)
                         </label>
                     </div>
+
+                    ${!this.isHandDelivery ? `
+                    <div style="margin-top: 10px; font-size: 0.8rem; color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.03); padding: 8px 10px; border-radius: 8px;">
+                        📦 Livraison Mondial Relay : trouvez votre point relais sur <strong style="color:#ff9ec6;">mondialrelay.fr</strong> avant de valider, vous devrez l'indiquer à l'étape suivante.
+                    </div>
+                    ` : ''}
                 </div>
 
                 <!-- DÉTAILS DES PRIX -->

@@ -84,7 +84,7 @@ export async function onRequestPost(context) {
                     key: 'point_relais',
                     label: {
                         type: 'custom',
-                        custom: 'Point Relais Mondial Relay (nom + ville) — trouvez le vôtre sur mondialrelay.fr',
+                        custom: 'Point Relais Mondial Relay (nom + ville)',
                     },
                     type: 'text',
                     optional: false,
