@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merci pour votre commande ! | Mag'ical Epoxy</title>
+    <meta name="robots" content="noindex">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #000000 0%, #1a0033 20%, #2d1b69 40%, #4a148c 60%, #311b92 80%, #000000 100%);
+            background-attachment: fixed;
+            color: white;
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .success-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .success-box {
+            max-width: 600px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 50px 40px;
+            border-left: 5px solid #ff69b4;
+            border-bottom: 5px solid #ff69b4;
+        }
+        .success-icon { font-size: 4rem; margin-bottom: 10px; }
+        h1 {
+            color: #ff9ec6;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .success-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: #f0f0f0;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        .success-details {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            margin-bottom: 35px;
+            text-align: left;
+            background: rgba(255,255,255,0.03);
+            padding: 20px;
+            border-radius: 12px;
+        }
+        .success-details strong { color: #ff9ec6; }
+        .btn-return {
+            display: inline-block;
+            color: black;
+            background: #ff69b4;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-return:hover {
+            background: #ff9ec6;
+            box-shadow: 0 0 20px rgba(255,105,180,0.5);
+        }
+        #star-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .star { position: absolute; border-radius: 50%; background: white; opacity: 0.5; width: 2px; height: 2px; }
+    </style>
+</head>
+<body>
+    <div id="star-container"></div>
+
+    <div class="success-container">
+        <div class="success-box">
+            <div class="success-icon">✨🎁✨</div>
+            <h1>Merci pour votre commande !</h1>
+            <p class="success-text">Votre petite création magique va bientôt être préparée avec soin...</p>
+            <div class="success-details">
+                <strong>Ce qui vous attend maintenant :</strong><br>
+                📧 Vous allez recevoir un email de confirmation de la part de Stripe avec le détail de votre commande.<br><br>
+                📦 Si vous avez choisi la livraison, votre création partira vers le point relais Mondial Relay que vous avez indiqué.<br><br>
+                🤝 Si vous avez choisi la remise en main propre, je vous recontacte directement pour organiser ça.<br><br>
+                Une question ? N'hésitez pas à me contacter à
+                <a href="mailto:mag-epoxy@gmx.fr" style="color:#ff9ec6;">mag-epoxy@gmx.fr</a>
+            </div>
+            <a href="index.html" class="btn-return">🏠 Retour à la boutique</a>
+        </div>
+    </div>
+
+    <script>
+        // Vide le panier local une fois la commande confirmée
+        localStorage.removeItem('magicalEpoxyCart');
+
+        // Petites étoiles décoratives, comme sur le reste du site
+        const container = document.getElementById('star-container');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            container.appendChild(star);
+        }
+    </script>
+</body>
+</html>
